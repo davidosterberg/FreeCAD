@@ -483,13 +483,7 @@ void TaskFeaturePick::onDoubleClick(QListWidgetItem *item)
     Gui::Selection().addSelection(documentName.c_str(), t.toLatin1());
     doSelection = false;
 
-    // this does not do anything
-    //Gui::TaskView::TaskDialog *dlg = Gui::Control().activeDialog();
-    //PartDesignGui::TaskDlgFeaturePick *pickDlg = qobject_cast<PartDesignGui::TaskDlgFeaturePick *>(dlg);
-    //pickDlg->accept();
-
-    //this causes segfault beacause the dialog is destroyed before all the event handling is done.
-    Gui::Control().closeDialog();
+    QMetaObject::invokeMethod(qobject_cast<Gui::ControlSingleton*>(&Gui::Control()), "accept", Qt::QueuedConnection);
 }
 
 void TaskFeaturePick::slotDeletedObject(const Gui::ViewProviderDocumentObject& Obj)
