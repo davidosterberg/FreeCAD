@@ -25,7 +25,7 @@
 #define GUI_VIEWPROVIDER_DRAGGER_H
 
 #include "ViewProviderDocumentObject.h"
-#include "SoFCCSysDragger.h"
+#include "Inventor/Draggers/SoTransformDragger.h"
 #include <Base/Placement.h>
 #include <App/PropertyGeo.h>
 
@@ -55,10 +55,6 @@ public:
 
     /// destructor.
     ~ViewProviderDragger() override;
-
-    /// Property controlling visibility of the placement indicator, useful for displaying origin
-    /// position of attached Document Object.
-    App::PropertyBool ShowPlacement;
 
     /// Origin used when object is transformed. It temporarily changes the origin of object.
     /// Dragger is normally placed at the transform origin, unless explicitly overridden via
@@ -117,7 +113,7 @@ protected:
      */
     virtual TaskView::TaskDialog* getTransformDialog();
 
-    CoinPtr<SoFCCSysDragger> csysDragger = nullptr;
+    CoinPtr<SoTransformDragger> transformDragger = nullptr;
     ViewProvider *forwardedViewProvider = nullptr;
 
     CoinPtr<SoSwitch> pcPlacement;
