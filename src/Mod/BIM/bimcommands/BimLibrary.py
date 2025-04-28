@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # SPDX-License-Identifier: LGPL-2.1-or-later
 
 # ***************************************************************************
@@ -654,6 +652,7 @@ class BIM_Library_TaskPanel:
     def place(self, path):
 
         import Part
+        import WorkingPlane
 
         self.shape = Part.read(path)
         if hasattr(FreeCADGui, "Snapper"):
@@ -667,8 +666,7 @@ class BIM_Library_TaskPanel:
             self.delta = self.shape.BoundBox.Center
             self.box.move(self.delta)
             self.box.on()
-            if hasattr(FreeCAD, "DraftWorkingPlane"):
-                FreeCAD.DraftWorkingPlane.setup()
+            WorkingPlane.get_working_plane()
             self.origin = self.makeOriginWidget()
             FreeCADGui.Snapper.getPoint(
                 movecallback=self.mouseMove,

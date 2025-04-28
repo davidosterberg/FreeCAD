@@ -1,5 +1,3 @@
-# -*- coding: utf8 -*-
-
 # SPDX-License-Identifier: LGPL-2.1-or-later
 
 # ***************************************************************************
@@ -68,7 +66,10 @@ class BIM_DimensionHorizontal(gui_dimensions.Dimension):
         }
 
     def Activated(self):
-        self.dir = FreeCAD.DraftWorkingPlane.u
+
+        import WorkingPlane
+
+        self.dir = WorkingPlane.get_working_plane().u
         super().Activated()
 
 
@@ -90,7 +91,10 @@ class BIM_DimensionVertical(gui_dimensions.Dimension):
         }
 
     def Activated(self):
-        self.dir = FreeCAD.DraftWorkingPlane.v
+
+        import WorkingPlane
+
+        self.dir = WorkingPlane.get_working_plane().v
         super().Activated()
 
 

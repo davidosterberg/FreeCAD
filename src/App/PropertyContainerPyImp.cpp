@@ -482,7 +482,7 @@ PyObject* PropertyContainerPy::getEnumerationsOfProperty(PyObject* args)
         return nullptr;
     }
 
-    PropertyEnumeration* enumProp = dynamic_cast<PropertyEnumeration*>(prop);
+    PropertyEnumeration* enumProp = freecad_cast<PropertyEnumeration*>(prop);
     if (!enumProp) {
         Py_Return;
     }
@@ -510,7 +510,7 @@ Py::List PropertyContainerPy::getPropertiesList() const
 }
 
 
-PyObject* PropertyContainerPy::dumpPropertyContent(PyObject* args, PyObject* kwds)
+PyObject* PropertyContainerPy::dumpPropertyContent(PyObject* args, PyObject* kwds) const
 {
     int compression = 3;
     const char* property {};

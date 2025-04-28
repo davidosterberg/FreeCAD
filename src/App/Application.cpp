@@ -64,6 +64,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QProcessEnvironment>
+#include <QRegularExpression>
 #include <QSettings>
 #include <QStandardPaths>
 #include <Inventor/C/basic.h>
@@ -127,7 +128,6 @@
 #include "OriginGroupExtension.h"
 #include "OriginGroupExtensionPy.h"
 #include "SuppressibleExtension.h"
-#include "SuppressibleExtensionPy.h"
 #include "Part.h"
 #include "GeoFeaturePy.h"
 #include "Placement.h"
@@ -2644,8 +2644,6 @@ void Application::initConfig(int argc, char ** argv)
         _pConsoleObserverStd->bWrn = false;
         _pConsoleObserverStd->bErr = false;
     }
-    if (mConfig["Verbose"] == "Strict")
-        Base::Console().UnsetConsoleMode(Base::ConsoleSingleton::Verbose);
 
     // file logging Init ===========================================================
     if (mConfig["LoggingFile"] == "1") {
@@ -3544,7 +3542,6 @@ std::string Application::FindHomePath(const char* sCall)
 QString Application::prettyProductInfoWrapper()
 {
     auto productName = QSysInfo::prettyProductName();
-#if QT_VERSION < QT_VERSION_CHECK(6, 5, 0)
 #ifdef FC_OS_MACOSX
     auto macosVersionFile =
         QStringLiteral("/System/Library/CoreServices/.SystemVersionPlatform.plist");
@@ -3567,7 +3564,6 @@ QString Application::prettyProductInfoWrapper()
             }
         }
     }
-#endif
 #endif
 #ifdef FC_OS_WIN64
     QSettings regKey {
