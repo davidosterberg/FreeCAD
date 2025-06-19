@@ -108,7 +108,7 @@ def _find_compatible_module():
             # use a single folder as path and try to load vtk
             sys.path = [folder]
             if vtk_module_compatible():
-                # we do still unload, to let the user descide if he wants to use it
+                # we do still unload, to let the user decide if they want to use it
                 _unload_vtk_modules()
                 sys.path = path
                 return folder
@@ -178,7 +178,7 @@ def vtk_module_handling():
         message = translate(
             "FEM",
             (
-                "FreeCAD is linked to a different VTK library then the imported "
+                "FreeCAD is linked to a different VTK library than the imported "
                 "VTK python module. This is incompatible and will lead to errors."
                 "\n\nWrong python module is imported from: \n{}"
             ),

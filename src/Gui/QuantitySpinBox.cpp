@@ -66,6 +66,7 @@ public:
     QuantitySpinBoxPrivate(QuantitySpinBox *q) :
       validInput(true),
       pendingEmit(false),
+      normalize(true),
       checkRangeInExpression(false),
       unitValue(0),
       maximum(std::numeric_limits<double>::max()),
@@ -223,7 +224,7 @@ public:
         ok = parseString(copy, res, value, path);
 
         // If result does not have unit: add default unit
-        if (res.getUnit().isEmpty()){
+        if (res.isDimensionless()) {
             res.setUnit(unit);
         }
 
@@ -255,6 +256,7 @@ public:
     QLocale locale;
     bool validInput;
     bool pendingEmit;
+    bool normalize;
     bool checkRangeInExpression;
     QString validStr;
     Base::Quantity quantity;
@@ -401,15 +403,21 @@ void QuantitySpinBox::resizeEvent(QResizeEvent * event)
 
 void Gui::QuantitySpinBox::keyPressEvent(QKeyEvent* event)
 {
+    Q_D(QuantitySpinBox);
+
     const auto isEnter = event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return;
 
-    if (isEnter && !isNormalized()) {
+    if (d->normalize && isEnter && !isNormalized()) {
         normalize();
         return;
     }
 
     if (!handleKeyEvent(event->text())) {
         QAbstractSpinBox::keyPressEvent(event);
+    }
+
+    if (isEnter) {
+        returnPressed();
     }
 }
 
@@ -494,7 +502,13 @@ bool QuantitySpinBox::isNormalized()
                                               QRegularExpression::CaseInsensitiveOption);
 
     Q_D(const QuantitySpinBox);
-    return !d->validStr.contains(operators);
+
+    // this check is two level
+    // 1. We consider every string that does not contain operators as normalized
+    // 2. If it does contain operators we check if it differs from normalized input - as some
+    //    operators like - can be allowed even in normalized case.
+    return !d->validStr.contains(operators)
+        || d->validStr.toStdString() == d->quantity.getUserString();
 }
 
 void QuantitySpinBox::setValue(const Base::Quantity& value)
@@ -523,6 +537,18 @@ void QuantitySpinBox::setValue(double value)
     setValue(quantity);
 }
 
+bool QuantitySpinBox::autoNormalize() const
+{
+    Q_D(const QuantitySpinBox);
+    return d->normalize;
+}
+
+void QuantitySpinBox::setAutoNormalize(bool normalize)
+{
+    Q_D(QuantitySpinBox);
+    d->normalize = normalize;
+}
+
 bool QuantitySpinBox::hasValidInput() const
 {
     Q_D(const QuantitySpinBox);
@@ -545,6 +571,11 @@ void QuantitySpinBox::userInput(const QString & text)
     }
     else {
         d->validInput = false;
+
+        // we have to emit here signal explicitly as validator will not pass
+        // this value further but we want to check it to disable isSet flag if
+        // it has been set previously
+        Q_EMIT valueChanged(d->quantity.getValue());
         return;
     }
 
@@ -903,8 +934,13 @@ void QuantitySpinBox::focusInEvent(QFocusEvent * event)
 
 void QuantitySpinBox::focusOutEvent(QFocusEvent * event)
 {
+    Q_D(const QuantitySpinBox);
+
     validateInput();
-    normalize();
+
+    if (d->normalize) {
+        normalize();
+    }
 
     QToolTip::hideText();
     QAbstractSpinBox::focusOutEvent(event);

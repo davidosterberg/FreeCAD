@@ -260,25 +260,25 @@ void BaseGeom::Save(Base::Writer &writer) const
 void BaseGeom::Restore(Base::XMLReader &reader)
 {
     reader.readElement("GeomType");
-    geomType = static_cast<GeomType>(reader.getAttributeAsInteger("value"));
+    geomType = reader.getAttribute<GeomType>("value");
     reader.readElement("ExtractType");
-    extractType = static_cast<ExtractionType>(reader.getAttributeAsInteger("value"));
+    extractType = reader.getAttribute<ExtractionType>("value");
     reader.readElement("EdgeClass");
-    classOfEdge = static_cast<EdgeClass>(reader.getAttributeAsInteger("value"));
+    classOfEdge = reader.getAttribute<EdgeClass>("value");
     reader.readElement("HLRVisible");
-    hlrVisible = reader.getAttributeAsInteger("value") != 0;
+    hlrVisible = reader.getAttribute<bool>("value");
     reader.readElement("Reversed");
-    reversed = reader.getAttributeAsInteger("value") != 0;
+    reversed = reader.getAttribute<bool>("value");
     reader.readElement("Ref3D");
-    ref3D = reader.getAttributeAsInteger("value");
+    ref3D = reader.getAttribute<long>("value");
     reader.readElement("Cosmetic");
-    cosmetic = reader.getAttributeAsInteger("value") != 0;
+    cosmetic = reader.getAttribute<bool>("value");
     reader.readElement("Source");
-    m_source = static_cast<SourceType>(reader.getAttributeAsInteger("value"));
+    m_source = reader.getAttribute<SourceType>("value");
     reader.readElement("SourceIndex");
-    m_sourceIndex = reader.getAttributeAsInteger("value");
+    m_sourceIndex = reader.getAttribute<long>("value");
     reader.readElement("CosmeticTag");
-    cosmeticTag = reader.getAttribute("value");
+    cosmeticTag = reader.getAttribute<const char*>("value");
 }
 
 std::vector<Base::Vector3d> BaseGeom::findEndPoints()
@@ -768,12 +768,12 @@ void Circle::Restore(Base::XMLReader &reader)
     // read my Element
     reader.readElement("Center");
     // get the value of my Attribute
-    center.x = reader.getAttributeAsFloat("X");
-    center.y = reader.getAttributeAsFloat("Y");
-    center.z = reader.getAttributeAsFloat("Z");
+    center.x = reader.getAttribute<double>("X");
+    center.y = reader.getAttribute<double>("Y");
+    center.z = reader.getAttribute<double>("Z");
 
     reader.readElement("Radius");
-    radius = reader.getAttributeAsFloat("value");
+    radius = reader.getAttribute<double>("value");
 }
 
 AOC::AOC(const TopoDS_Edge &e) : Circle(e)
@@ -979,26 +979,26 @@ void AOC::Restore(Base::XMLReader &reader)
 {
     Circle::Restore(reader);
     reader.readElement("Start");
-    startPnt.x = reader.getAttributeAsFloat("X");
-    startPnt.y = reader.getAttributeAsFloat("Y");
-    startPnt.z = reader.getAttributeAsFloat("Z");
+    startPnt.x = reader.getAttribute<double>("X");
+    startPnt.y = reader.getAttribute<double>("Y");
+    startPnt.z = reader.getAttribute<double>("Z");
     reader.readElement("End");
-    endPnt.x = reader.getAttributeAsFloat("X");
-    endPnt.y = reader.getAttributeAsFloat("Y");
-    endPnt.z = reader.getAttributeAsFloat("Z");
+    endPnt.x = reader.getAttribute<double>("X");
+    endPnt.y = reader.getAttribute<double>("Y");
+    endPnt.z = reader.getAttribute<double>("Z");
     reader.readElement("Middle");
-    midPnt.x = reader.getAttributeAsFloat("X");
-    midPnt.y = reader.getAttributeAsFloat("Y");
-    midPnt.z = reader.getAttributeAsFloat("Z");
+    midPnt.x = reader.getAttribute<double>("X");
+    midPnt.y = reader.getAttribute<double>("Y");
+    midPnt.z = reader.getAttribute<double>("Z");
 
     reader.readElement("StartAngle");
-    startAngle = reader.getAttributeAsFloat("value");
+    startAngle = reader.getAttribute<double>("value");
     reader.readElement("EndAngle");
-    endAngle = reader.getAttributeAsFloat("value");
+    endAngle = reader.getAttribute<double>("value");
     reader.readElement("Clockwise");
-    cw = (int)reader.getAttributeAsInteger("value")==0?false:true;
+    cw = reader.getAttribute<bool>("value");
     reader.readElement("Large");
-    largeArc = (int)reader.getAttributeAsInteger("value")==0?false:true;
+    largeArc = reader.getAttribute<bool>("value");
 }
 
 //! Generic is a multiline
@@ -1072,14 +1072,14 @@ void Generic::Restore(Base::XMLReader &reader)
 {
     BaseGeom::Restore(reader);
     reader.readElement("Points");
-    int stop = reader.getAttributeAsInteger("PointsCount");
+    int stop = reader.getAttribute<long>("PointsCount");
     int i = 0;
     for ( ; i < stop; i++) {
         reader.readElement("Point");
         Base::Vector3d p;
-        p.x = reader.getAttributeAsFloat("X");
-        p.y = reader.getAttributeAsFloat("Y");
-        p.z = reader.getAttributeAsFloat("Z");
+        p.x = reader.getAttribute<double>("X");
+        p.y = reader.getAttribute<double>("Y");
+        p.z = reader.getAttribute<double>("Z");
         points.push_back(p);
     }
     reader.readEndElement("Points");
@@ -1252,64 +1252,61 @@ BezierSegment::BezierSegment(const TopoDS_Edge &e)
 }
 
 //**** Vertex
-Vertex::Vertex()
+Vertex::Vertex() :
+    extractType(ExtractionType::Plain),    // obsolete?
+    hlrVisible(false),
+    ref3D(-1),                              // obsolete
+    m_center(false),
+    cosmetic(false),
+    cosmeticLink(-1),
+    m_reference(false)
+
 {
     pnt = Base::Vector3d(0.0, 0.0, 0.0);
-    extractType = ExtractionType::Plain;       //obs?
-    hlrVisible = false;
-    ref3D = -1;                        //obs. never used.
-    m_center = false;
     BRepBuilderAPI_MakeVertex mkVert(gp_Pnt(0.0, 0.0, 0.0));
     occVertex = mkVert.Vertex();
-    cosmetic = false;
-    cosmeticLink = -1;
     cosmeticTag = std::string();
-    m_reference = false;
 }
 
-Vertex::Vertex(const Vertex* v)
+Vertex::Vertex(const Vertex* v) :
+    extractType(v->extractType),    // obsolete?
+    hlrVisible(v->hlrVisible),
+    ref3D(v->ref3D),                              // obsolete
+    m_center(v->m_center),
+    occVertex(v->occVertex),
+    cosmetic(v->cosmetic),
+    cosmeticLink(v->cosmeticLink),
+    cosmeticTag(v->cosmeticTag),
+    m_reference(v->m_reference)
 {
     pnt = v->point();
-    extractType = v->extractType;       //obs?
-    hlrVisible = v->hlrVisible;
-    ref3D = v->ref3D;                  //obs. never used.
-    m_center = v->m_center;
-    occVertex = v->occVertex;
-    cosmetic = v->cosmetic;
-    cosmeticLink = v->cosmeticLink;
-    cosmeticTag = v->cosmeticTag;
-    m_reference = false;
 }
 
-Vertex::Vertex(double x, double y)
+Vertex::Vertex(double x, double y) :
+    extractType(ExtractionType::Plain),    // obsolete?
+    hlrVisible(false),
+    ref3D(-1),                              // obsolete
+    m_center(false),
+    cosmetic(false),
+    cosmeticLink(-1),
+    m_reference(false)
 {
     pnt = Base::Vector3d(x, y, 0.0);
-    extractType = ExtractionType::Plain;       //obs?
-    hlrVisible = false;
-    ref3D = -1;                        //obs. never used.
-    m_center = false;
     BRepBuilderAPI_MakeVertex mkVert(gp_Pnt(x, y, 0.0));
     occVertex = mkVert.Vertex();
-    cosmetic = false;
-    cosmeticLink = -1;
     cosmeticTag = std::string();
-    m_reference = false;
 }
 
 Vertex::Vertex(Base::Vector3d v) : Vertex(v.x, v.y)
 {
-//    Base::Console().message("V::V(%s)\n",
-//                            DrawUtil::formatVector(v).c_str());
+
 }
 
 
 bool Vertex::isEqual(const Vertex& v, double tol)
 {
     double dist = (pnt - (v.pnt)).Length();
-    if (dist <= tol) {
-        return true;
-    }
-    return false;
+    return (dist <= tol);
 }
 
 void Vertex::Save(Base::Writer &writer) const
@@ -1318,56 +1315,64 @@ void Vertex::Save(Base::Writer &writer) const
                 << "X=\"" <<  pnt.x <<
                 "\" Y=\"" <<  pnt.y <<
                 "\" Z=\"" <<  pnt.z <<
-                 "\"/>" << endl;
+                 "\"/>" << '\n';
 
-    writer.Stream() << writer.ind() << "<Extract value=\"" <<  extractType << "\"/>" << endl;
+    writer.Stream() << writer.ind() << "<Extract value=\"" <<  extractType << "\"/>" << '\n';
     const char v = hlrVisible ? '1':'0';
-    writer.Stream() << writer.ind() << "<HLRVisible value=\"" <<  v << "\"/>" << endl;
-    writer.Stream() << writer.ind() << "<Ref3D value=\"" <<  ref3D << "\"/>" << endl;
+    writer.Stream() << writer.ind() << "<HLRVisible value=\"" <<  v << "\"/>" << '\n';
+    writer.Stream() << writer.ind() << "<Ref3D value=\"" <<  ref3D << "\"/>" << '\n';
     const char c = m_center ?'1':'0';
-    writer.Stream() << writer.ind() << "<IsCenter value=\"" <<  c << "\"/>" << endl;
+    writer.Stream() << writer.ind() << "<IsCenter value=\"" <<  c << "\"/>" << '\n';
     const char c2 = cosmetic?'1':'0';
-    writer.Stream() << writer.ind() << "<Cosmetic value=\"" <<  c2 << "\"/>" << endl;
-    writer.Stream() << writer.ind() << "<CosmeticLink value=\"" <<  cosmeticLink << "\"/>" << endl;
-    writer.Stream() << writer.ind() << "<CosmeticTag value=\"" <<  cosmeticTag << "\"/>" << endl;
-
-    //do we need to save this?  always recreated by program.
-//    const char r = reference?'1':'0';
-//    writer.Stream() << writer.ind() << "<Reference value=\"" <<  r << "\"/>" << endl;
-
-    Tag::Save(writer);
+    writer.Stream() << writer.ind() << "<Cosmetic value=\"" <<  c2 << "\"/>" << '\n';
+    writer.Stream() << writer.ind() << "<CosmeticLink value=\"" <<  cosmeticLink << "\"/>" << '\n';
+    writer.Stream() << writer.ind() << "<CosmeticTag value=\"" <<  cosmeticTag << "\"/>" << '\n';
 }
 
 void Vertex::Restore(Base::XMLReader &reader)
 {
     reader.readElement("Point");
-    pnt.x = reader.getAttributeAsFloat("X");
-    pnt.y = reader.getAttributeAsFloat("Y");
-    pnt.z = reader.getAttributeAsFloat("Z");
+    pnt.x = reader.getAttribute<double>("X");
+    pnt.y = reader.getAttribute<double>("Y");
+    pnt.z = reader.getAttribute<double>("Z");
 
     reader.readElement("Extract");
-    extractType = static_cast<ExtractionType>(reader.getAttributeAsInteger("value"));
-//    reader.readElement("Visible");
-//    hlrVisible = (bool)reader.getAttributeAsInteger("value")==0?false:true;
+    extractType = reader.getAttribute<ExtractionType>("value");
+    reader.readElement("HLRVisible");
+    hlrVisible = reader.getAttribute<bool>("value");
     reader.readElement("Ref3D");
-    ref3D = reader.getAttributeAsInteger("value");
+    ref3D = reader.getAttribute<int>("value");
     reader.readElement("IsCenter");
-    hlrVisible = reader.getAttributeAsInteger("value") != 0;
+    m_center = reader.getAttribute<bool>("value");
     reader.readElement("Cosmetic");
-    cosmetic = reader.getAttributeAsInteger("value") != 0;
+    cosmetic = reader.getAttribute<bool>("value");
     reader.readElement("CosmeticLink");
-    cosmeticLink = reader.getAttributeAsInteger("value");
+    cosmeticLink = reader.getAttribute<int>("value");
     reader.readElement("CosmeticTag");
-    cosmeticTag = reader.getAttribute("value");
+    cosmeticTag = reader.getAttribute<const char*>("value");
 
-    //will restore read to eof looking for "Reference" in old docs??  YES!!
-//    reader.readElement("Reference");
-//    m_reference = (bool)reader.getAttributeAsInteger("value")==0?false:true;
-
-    Tag::Restore(reader, "VertexTag");
+    // restore tag from VertexTag if it exists
+    restoreVertexTag(reader);
 
     BRepBuilderAPI_MakeVertex mkVert(gp_Pnt(pnt.x, pnt.y, pnt.z));
     occVertex = mkVert.Vertex();
+}
+
+//! look at the next element in the file.  If it is a VertexTag, set the tag.
+//! readNextElement will stop searching when it encounters an end element (ex: </CosmeticVertex>) or
+//! end of document.
+void Vertex::restoreVertexTag(Base::XMLReader& reader)
+{
+    if (!reader.readNextElement()) {
+        return;
+    }
+
+    if(strcmp(reader.localName(),"VertexTag") == 0) {
+        std::string temp = reader.getAttribute<const char*>("value");
+        setTag(Tag::fromString(temp));
+    }
+    // else we can not set the tag here.  if this is a CosmeticVertex, the tag will be set later.
+    // the tag is not used for geometry vertices.
 }
 
 void Vertex::dump(const char* title)
@@ -1382,7 +1387,7 @@ TopoShape Vertex::asTopoShape(double scale)
     Base::Vector3d point = Base::convertTo<Base::Vector3d>(BRep_Tool::Pnt(getOCCVertex()));
     point = point / scale;
     BRepBuilderAPI_MakeVertex mkVert(Base::convertTo<gp_Pnt>(point));
-    return TopoShape(mkVert.Vertex());
+    return {mkVert.Vertex()};
 }
 
 
@@ -1570,7 +1575,7 @@ bool GeometryUtils::getCircleParms(const TopoDS_Edge& occEdge, double& radius, B
         center = Base::convertTo<Base::Vector3d>(circleFromParms->Circ().Location());
         return true;
     }
-    catch (Standard_Failure& err) {
+    catch (Standard_Failure&) {
         Base::Console().message("Geo::getCircleParms - failed to make a circle\n");
     }
 

@@ -3771,6 +3771,23 @@ void Application::getVerboseCommonInfo(QTextStream& str, const std::map<std::str
             << " (" << loc.name() << ") ]";
     }
     str << "\n";
+
+    ParameterGrp::handle hGrp = App::GetApplication().GetParameterGroupByPath("User parameter:BaseApp/Preferences/View");
+
+    QString navStyle = QString::fromStdString(hGrp->GetASCII("NavigationStyle", "Gui::CADNavigationStyle"));
+    // All navigation styles are named on the format "Gui::<Name>NavigationStyle"
+    // so we remove the "Gui::" prefix and the "NavigationStyle" suffix before printing.
+    navStyle.replace(QRegularExpression(QLatin1String("^Gui::")), {});
+    navStyle.replace(QRegularExpression(QLatin1String("NavigationStyle$")), {});
+
+    const QString orbitStyle = QStringLiteral("Turntable,Trackball,Free Turntable,Trackball Classic,Rounded Arcball")
+                               .split(QLatin1Char(','))
+                               .at(hGrp->GetInt("OrbitStyle", 4));
+    const QString rotMode = QStringLiteral("Window center,Drag at cursor,Object center")
+                            .split(QLatin1Char(','))
+                            .at(hGrp->GetInt("RotationMode", 0));
+
+    str << QStringLiteral("Navigation Style/Orbit Style/Rotation Mode: %1/%2/%3\n").arg(navStyle, orbitStyle, rotMode);
 }
 
 void Application::getVerboseAddOnsInfo(QTextStream& str, const std::map<std::string,std::string>& mConfig) {

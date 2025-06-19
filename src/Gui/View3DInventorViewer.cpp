@@ -3378,6 +3378,10 @@ void View3DInventorViewer::boxZoom(const SbBox2s& box)
 {
     navigation->boxZoom(box);
 }
+void View3DInventorViewer::scale(float factor)
+{
+    navigation->scale(factor);
+}
 
 SbBox3f View3DInventorViewer::getBoundingBox() const
 {
@@ -3606,7 +3610,7 @@ void View3DInventorViewer::alignToSelection()
             angle *= -1;
         }
 
-        using std::numbers::pi;
+        constexpr auto pi = std::numbers::pi_v<float>;
 
         // Make angle positive
         if (angle < 0) {

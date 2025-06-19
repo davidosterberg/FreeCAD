@@ -159,7 +159,10 @@ class BIM_Classification:
         self.form.treeClass.itemDoubleClicked.connect(self.apply)
         self.form.search.up.connect(self.onUpArrow)
         self.form.search.down.connect(self.onDownArrow)
-        self.form.onlyVisible.stateChanged.connect(self.onVisible)
+        if hasattr(self.form.onlyVisible, "checkStateChanged"): # Qt version >= 6.7.0
+            self.form.onlyVisible.checkStateChanged.connect(self.onVisible)
+        else: # Qt version < 6.7.0
+            self.form.onlyVisible.stateChanged.connect(self.onVisible)
 
         # center the dialog over FreeCAD window
         mw = FreeCADGui.getMainWindow()
@@ -624,6 +627,12 @@ class BIM_Classification:
                 FreeCAD.ActiveDocument.commitTransaction()
                 FreeCAD.ActiveDocument.recompute()
         else:
+            # Close the form if user has pressed Enter and did not
+            # select anything
+            if len(self.form.treeClass.selectedItems()) < 1:
+                self.form.close()
+                return
+
             code = self.form.treeClass.selectedItems()[0].text(0)
             pl = self.isEditing.PropertiesList
             if ("StandardCode" in pl) or ("IfcClass" in pl):

@@ -88,7 +88,7 @@ FemPostFilter::FilterPipeline& FemPostFilter::getFilterPipeline(std::string name
 void FemPostFilter::setActiveFilterPipeline(std::string name)
 {
     if (m_pipelines.count(name) == 0) {
-        throw Base::ValueError("Not a filter pipline name");
+        throw Base::ValueError("Not a filter pipeline name");
     }
 
     if (m_activePipeline != name && isValid()) {
@@ -390,11 +390,8 @@ FemPostDataAlongLineFilter::FemPostDataAlongLineFilter()
     m_probe->SetValidPointMaskArrayName("ValidPointArray");
     m_probe->SetPassPointArrays(1);
     m_probe->SetPassCellArrays(1);
-    // needs vtk > 6.1
-#if (VTK_MAJOR_VERSION > 6) && (VTK_MINOR_VERSION > 1)
     m_probe->ComputeToleranceOff();
     m_probe->SetTolerance(0.01);
-#endif
 
     clip.source = passthrough;
     clip.target = m_probe;
@@ -563,11 +560,8 @@ FemPostDataAtPointFilter::FemPostDataAtPointFilter()
     m_probe->SetValidPointMaskArrayName("ValidPointArray");
     m_probe->SetPassPointArrays(1);
     m_probe->SetPassCellArrays(1);
-    // needs vtk > 6.1
-#if (VTK_MAJOR_VERSION > 6) && (VTK_MINOR_VERSION > 1)
     m_probe->ComputeToleranceOff();
     m_probe->SetTolerance(0.01);
-#endif
 
     clip.source = passthrough;
     clip.target = m_probe;
@@ -1459,7 +1453,6 @@ void FemPostCalculatorFilter::updateAvailableFields()
 
     std::vector<std::string> scalars;
     std::vector<std::string> vectors;
-    //    std::vector<std::string> tensors;
 
     vtkSmartPointer<vtkDataObject> data = getInputData();
     vtkDataSet* dset = vtkDataSet::SafeDownCast(data);
@@ -1488,14 +1481,28 @@ void FemPostCalculatorFilter::updateAvailableFields()
 
 const std::vector<std::string> FemPostCalculatorFilter::getScalarVariables()
 {
+#if (VTK_MAJOR_VERSION >= 9) && (VTK_MINOR_VERSION > 0)
     std::vector<std::string> scalars = m_calculator->GetScalarVariableNames();
+#else
+    std::vector<std::string> scalars(m_calculator->GetScalarVariableNames(),
+                                     m_calculator->GetScalarVariableNames()
+                                         + m_calculator->GetNumberOfScalarArrays());
+#endif
+
     scalars.insert(scalars.begin(), {"coordsX", "coordsY", "coordsZ"});
     return scalars;
 }
 
 const std::vector<std::string> FemPostCalculatorFilter::getVectorVariables()
 {
+#if (VTK_MAJOR_VERSION >= 9) && (VTK_MINOR_VERSION > 0)
     std::vector<std::string> vectors = m_calculator->GetVectorVariableNames();
+#else
+    std::vector<std::string> vectors(m_calculator->GetVectorVariableNames(),
+                                     m_calculator->GetVectorVariableNames()
+                                         + m_calculator->GetNumberOfVectorArrays());
+#endif
+
     vectors.insert(vectors.begin(), "coords");
     return vectors;
 }
