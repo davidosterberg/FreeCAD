@@ -217,7 +217,11 @@ Gui::ToolBarItem* Workbench::setupToolBars() const
              << "FEM_PostFilterDataAtPoint"
              << "FEM_PostFilterCalculator"
              << "Separator"
-             << "FEM_PostCreateFunctions";
+             << "FEM_PostCreateFunctions"
+#ifdef FC_USE_VTK_PYTHON
+             << "FEM_PostVisualization"
+#endif
+        ;
 #endif
 
     Gui::ToolBarItem* utils = new Gui::ToolBarItem(root);
@@ -369,7 +373,11 @@ Gui::MenuItem* Workbench::setupMenuBar() const
              << "FEM_PostFilterDataAtPoint"
              << "FEM_PostFilterCalculator"
              << "Separator"
-             << "FEM_PostCreateFunctions";
+             << "FEM_PostCreateFunctions"
+#ifdef FC_USE_VTK_PYTHON
+             << "FEM_PostVisualization"
+#endif
+        ;
 #endif
 
     Gui::MenuItem* utils = new Gui::MenuItem;
