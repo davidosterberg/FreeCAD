@@ -69,6 +69,8 @@
 #include <Mod/Assembly/App/BomGroup.h>
 #include <Mod/PartDesign/App/Body.h>
 
+#include "TaskAssemblyMessages.h"
+
 #include "ViewProviderAssembly.h"
 #include "ViewProviderAssemblyPy.h"
 
@@ -212,6 +214,52 @@ bool ViewProviderAssembly::canDragObjectToTarget(App::DocumentObject* obj,
     return true;
 }
 
+void ViewProviderAssembly::updateData(const App::Property* prop)
+{
+    auto* obj = static_cast<Assembly::AssemblyObject*>(pcObject);
+    if (prop == &obj->Group) {
+        // Defer the icon update until the event loop is idle.
+        // This ensures the assembly has had a chance to recompute its
+        // connectivity state before we query it.
+
+        // We can't capture the raw 'obj' pointer because it may be deleted
+        // by the time the timer fires. Instead, we capture the names of the
+        // document and the object, and look them up again.
+        if (!obj->getDocument()) {
+            return;  // Should not happen, but a good safeguard
+        }
+        const std::string docName = obj->getDocument()->getName();
+        const std::string objName = obj->getNameInDocument();
+
+        QTimer::singleShot(0, [docName, objName]() {
+            // Re-acquire the document and the object safely.
+            App::Document* doc = App::GetApplication().getDocument(docName.c_str());
+            if (!doc) {
+                return;  // Document was closed
+            }
+
+            auto* pcObj = doc->getObject(objName.c_str());
+            auto* obj = static_cast<Assembly::AssemblyObject*>(pcObj);
+
+            // Now we can safely check if the object still exists and is attached.
+            if (!obj || !obj->isAttachedToDocument()) {
+                return;
+            }
+
+            std::vector<App::DocumentObject*> joints = obj->getJoints(false);
+            for (auto* joint : joints) {
+                Gui::ViewProvider* jointVp = Gui::Application::Instance->getViewProvider(joint);
+                if (jointVp) {
+                    jointVp->signalChangeIcon();
+                }
+            }
+        });
+    }
+    else {
+        Gui::ViewProviderPart::updateData(prop);
+    }
+}
+
 bool ViewProviderAssembly::setEdit(int mode)
 {
     if (mode == ViewProvider::Default) {
@@ -230,6 +278,17 @@ bool ViewProviderAssembly::setEdit(int mode)
         setDragger();
 
         attachSelection();
+
+        Gui::TaskView::TaskView* taskView = Gui::Control().taskPanel();
+        if (taskView) {
+            // Waiting for the solver to support reporting information.
+            // taskSolver = new TaskAssemblyMessages(this);
+            // taskView->addContextualPanel(taskSolver);
+        }
+
+        auto* assembly = getObject<AssemblyObject>();
+        connectSolverUpdate = assembly->signalSolverUpdate.connect(
+            boost::bind(&ViewProviderAssembly::UpdateSolverInformation, this));
 
         return true;
     }
@@ -258,6 +317,15 @@ void ViewProviderAssembly::unsetEdit(int mode)
                                 "Gui.getDocument(appDoc).ActiveView.setActiveObject('%s', None)",
                                 this->getObject()->getDocument()->getName(),
                                 PARTKEY);
+
+        Gui::TaskView::TaskView* taskView = Gui::Control().taskPanel();
+        if (taskView) {
+            // Waiting for the solver to support reporting information.
+            // taskView->removeContextualPanel(taskSolver);
+        }
+
+        connectSolverUpdate.disconnect();
+
         return;
     }
     ViewProviderPart::unsetEdit(mode);
@@ -763,6 +831,8 @@ ViewProviderAssembly::DragMode ViewProviderAssembly::findDragMode()
             // If fixed joint we need to find the upstream joint to find move mode.
             // For example : Gnd -(revolute)- A -(fixed)- B : if user try to move B, then we should
             // actually move A
+            movingJoint = nullptr;  // reinitialize because getUpstreamMovingPart will call
+            // getJointOfPartConnectingToGround again which will find the same joint.
             auto* upPart =
                 assemblyPart->getUpstreamMovingPart(docsToMove[0].obj, movingJoint, pName);
             if (!movingJoint) {
@@ -1107,7 +1177,9 @@ bool ViewProviderAssembly::canDelete(App::DocumentObject* objBeingDeleted) const
             // List its joints
             std::vector<App::DocumentObject*> joints = assemblyPart->getJointsOfObj(obj);
             for (auto* joint : joints) {
-                objToDel.push_back(joint);
+                if (std::ranges::find(objToDel, joint) == objToDel.end()) {
+                    objToDel.push_back(joint);
+                }
             }
             joints = assemblyPart->getJointsOfPart(obj);
             for (auto* joint : joints) {
@@ -1220,4 +1292,88 @@ ViewProviderAssembly::getCenterOfBoundingBox(const std::vector<MovingObject>& mo
     }
 
     return center;
+}
+
+inline QString intListHelper(const std::vector<int>& ints)
+{
+    QString results;
+    if (ints.size() < 8) {  // The 8 is a bit heuristic... more than that and we shift formats
+        for (const auto i : ints) {
+            if (results.isEmpty()) {
+                results.append(QStringLiteral("%1").arg(i));
+            }
+            else {
+                results.append(QStringLiteral(", %1").arg(i));
+            }
+        }
+    }
+    else {
+        const int numToShow = 3;
+        int more = ints.size() - numToShow;
+        for (int i = 0; i < numToShow; ++i) {
+            results.append(QStringLiteral("%1, ").arg(ints[i]));
+        }
+        results.append(ViewProviderAssembly::tr("ViewProviderAssembly", "and %1 more").arg(more));
+    }
+    return results;
+}
+
+void ViewProviderAssembly::UpdateSolverInformation()
+{
+    // Updates Solver Information with the Last solver execution at AssemblyObject level
+    auto* assembly = getObject<AssemblyObject>();
+
+    int dofs = assembly->getLastDoF();
+    bool hasConflicts = assembly->getLastHasConflicts();
+    bool hasRedundancies = assembly->getLastHasRedundancies();
+    bool hasPartiallyRedundant = assembly->getLastHasPartialRedundancies();
+    bool hasMalformed = assembly->getLastHasMalformedConstraints();
+
+    if (assembly->isEmpty()) {
+        signalSetUp(QStringLiteral("empty"), tr("Empty Assembly"), QString(), QString());
+    }
+    else if (dofs < 0 || hasConflicts) {  // over-constrained
+        signalSetUp(QStringLiteral("conflicting_constraints"),
+                    tr("Over-constrained:") + QLatin1String(" "),
+                    QStringLiteral("#conflicting"),
+                    QStringLiteral("(%1)").arg(intListHelper(assembly->getLastConflicting())));
+    }
+    else if (hasMalformed) {  // malformed joints
+        signalSetUp(
+            QStringLiteral("malformed_constraints"),
+            tr("Malformed joints:") + QLatin1String(" "),
+            QStringLiteral("#malformed"),
+            QStringLiteral("(%1)").arg(intListHelper(assembly->getLastMalformedConstraints())));
+    }
+    else if (hasRedundancies) {
+        signalSetUp(QStringLiteral("redundant_constraints"),
+                    tr("Redundant joints:") + QLatin1String(" "),
+                    QStringLiteral("#redundant"),
+                    QStringLiteral("(%1)").arg(intListHelper(assembly->getLastRedundant())));
+    }
+    else if (hasPartiallyRedundant) {
+        signalSetUp(
+            QStringLiteral("partially_redundant_constraints"),
+            tr("Partially redundant:") + QLatin1String(" "),
+            QStringLiteral("#partiallyredundant"),
+            QStringLiteral("(%1)").arg(intListHelper(assembly->getLastPartiallyRedundant())));
+    }
+    else if (assembly->getLastSolverStatus() != 0) {
+        signalSetUp(QStringLiteral("solver_failed"),
+                    tr("Solver failed to converge"),
+                    QStringLiteral(""),
+                    QStringLiteral(""));
+    }
+    else if (dofs > 0) {
+        signalSetUp(QStringLiteral("under_constrained"),
+                    tr("Under-constrained:") + QLatin1String(" "),
+                    QStringLiteral("#dofs"),
+                    tr("%n Degrees of Freedom", "", dofs));
+    }
+    else {
+        signalSetUp(QStringLiteral("fully_constrained"),
+                    tr("Fully constrained"),
+                    QString(),
+                    QString());
+    }
 }

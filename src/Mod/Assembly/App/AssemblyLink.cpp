@@ -352,7 +352,7 @@ void AssemblyLink::synchronizeJoints()
         }
 
         // Then we have to check the properties one by one.
-        copyPropertyIfDifferent<App::PropertyBool>(joint, lJoint, "Activated");
+        copyPropertyIfDifferent<App::PropertyBool>(joint, lJoint, "Suppressed");
         copyPropertyIfDifferent<App::PropertyFloat>(joint, lJoint, "Distance");
         copyPropertyIfDifferent<App::PropertyFloat>(joint, lJoint, "Distance2");
         copyPropertyIfDifferent<App::PropertyEnumeration>(joint, lJoint, "JointType");
@@ -541,7 +541,7 @@ AssemblyObject* AssemblyLink::getParentAssembly() const
     return nullptr;
 }
 
-bool AssemblyLink::isRigid()
+bool AssemblyLink::isRigid() const
 {
     auto* prop = dynamic_cast<App::PropertyBool*>(getPropertyByName("Rigid"));
     if (!prop) {
@@ -558,4 +558,19 @@ std::vector<App::DocumentObject*> AssemblyLink::getJoints()
         return {};
     }
     return jointGroup->getJoints();
+}
+
+bool AssemblyLink::allowDuplicateLabel() const
+{
+    return true;
+}
+
+int AssemblyLink::numberOfComponents() const
+{
+    return isRigid() ? 1 : getLinkedAssembly()->numberOfComponents();
+}
+
+bool AssemblyLink::isEmpty() const
+{
+    return numberOfComponents() == 0;
 }

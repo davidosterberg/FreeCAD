@@ -237,7 +237,7 @@ class _Stairs(ArchComponent.Component):
 
 
     def loads(self,state):
-        super().loads(state)  # do nothing as of 2024.11.28
+        self.Type = "Stairs"
         if state == None:
             return
         elif state[0] == 'S':  # state[1] == 't', behaviour before 2024.11.28
@@ -248,7 +248,6 @@ class _Stairs(ArchComponent.Component):
         elif state[0] != 'Stairs':  # model before merging super.dumps/loads()
             self.ArchSkPropSetPickedUuid = state[0]
             self.ArchSkPropSetListPrev = state[1]
-        self.Type = "Stairs"
 
 
     def onDocumentRestored(self,obj):
@@ -542,6 +541,8 @@ class _Stairs(ArchComponent.Component):
                     if railingLeftObject.Base:
                         doc.removeObject(railingLeftObject.Base.Name)
                     railingLeftWireObject = doc.addObject("Part::Feature","RailingWire")
+                    if FreeCAD.GuiUp:
+                        railingLeftWireObject.ViewObject.hide()
                     railingLeftObject.Base = railingLeftWireObject
                 # update the Base object shape
                 railingLeftObject.Base.Shape = railWireL
@@ -562,6 +563,8 @@ class _Stairs(ArchComponent.Component):
                     if railingRightObject.Base:
                         doc.removeObject(railingRightObject.Base.Name)
                     railingRightWireObject = doc.addObject("Part::Feature","RailingWire")
+                    if FreeCAD.GuiUp:
+                        railingRightWireObject.ViewObject.hide()
                     railingRightObject.Base = railingRightWireObject
                 # update the Base object shape
                 railingRightObject.Base.Shape = railWireR
@@ -1706,5 +1709,3 @@ class _ViewProviderStairs(ArchComponent.ViewProviderComponent):
                 lst.extend(obj.Subtractions)
             return lst
         return []
-
-
