@@ -135,7 +135,7 @@ class Results(run.Results):
             if femutils.is_of_type(m.Mesh, "Fem::MeshResult"):
                 self.analysis.Document.removeObject(m.Mesh.Name)
             self.analysis.Document.removeObject(m.Name)
-        self.analysis.Document.recompute()
+        #self.analysis.Document.recompute()
 
     def load_results(self):
         self.pushStatus("Import new results...\n")
