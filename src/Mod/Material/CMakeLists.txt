@@ -138,8 +138,11 @@ SET(MaterialLib_Files
     Resources/Materials/Standard/Thermoplast/ABS-Generic.FCMat
     Resources/Materials/Standard/Thermoplast/Acrylic-Glass-Generic.FCMat
     Resources/Materials/Standard/Thermoplast/PA6-Generic.FCMat
+    Resources/Materials/Standard/Thermoplast/PEEK-Generic.FCMat
     Resources/Materials/Standard/Thermoplast/PET-Generic.FCMat
     Resources/Materials/Standard/Thermoplast/PLA-Generic.FCMat
+    Resources/Materials/Standard/Thermoplast/POM-Homopolymer-Generic.FCMat
+    Resources/Materials/Standard/Thermoplast/POM-Copolymer-Generic.FCMat
     Resources/Materials/Standard/Thermoplast/PP-Generic.FCMat
     Resources/Materials/Standard/Thermoplast/PTFE-Generic.FCMat
     Resources/Materials/Standard/Thermoplast/PVC-Generic.FCMat
