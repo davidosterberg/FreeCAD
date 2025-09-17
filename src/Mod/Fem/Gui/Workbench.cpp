@@ -111,6 +111,7 @@ Gui::ToolBarItem* Workbench::setupToolBars() const
            << "FEM_ElementGeometry1D"
            << "FEM_ElementRotation1D"
            << "FEM_ElementGeometry2D"
+           << "FEM_ElementGeometryLaminate"
            << "FEM_ElementFluid1D";
 
     Gui::ToolBarItem* electromag = new Gui::ToolBarItem(root);
@@ -251,6 +252,7 @@ Gui::MenuItem* Workbench::setupMenuBar() const
     *elegeom << "FEM_ElementGeometry1D"
              << "FEM_ElementRotation1D"
              << "FEM_ElementGeometry2D"
+             << "FEM_ElementGeometryLaminate"
              << "FEM_ElementFluid1D";
 
     Gui::MenuItem* elec = new Gui::MenuItem;
@@ -337,6 +339,7 @@ Gui::MenuItem* Workbench::setupMenuBar() const
     root->insertItem(item, solve);
     solve->setCommand("&Solve");
     *solve << "FEM_SolverCalculiX"
+           << "FEM_SolverCodeAster"
            << "FEM_SolverElmer"
            << "FEM_SolverMystran"
            << "FEM_SolverZ88"
