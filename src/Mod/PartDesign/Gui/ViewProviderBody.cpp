@@ -392,6 +392,9 @@ bool ViewProviderBody::canDropObject(App::DocumentObject* obj) const
     else if (obj->isDerivedFrom<App::LocalCoordinateSystem>()) {
         return !obj->isDerivedFrom<App::Origin>();
     }
+    else if (obj->isDerivedFrom<Part::Part2DObject>()) {
+        return true;
+    }
     else if (!obj->isDerivedFrom<Part::Feature>()) {
         return false;
     }
@@ -453,3 +456,14 @@ void ViewProviderBody::dropObject(App::DocumentObject* obj)
         }
     }
 }
+bool ViewProviderBody::canDragObjectToTarget(App::DocumentObject* obj,
+                                             App::DocumentObject* target) const
+{
+    if (obj->isDerivedFrom<PartDesign::Feature>()) {
+        return target && target->is<PartDesign::Body>();
+    }
+
+    return ViewProviderPart::canDragObjectToTarget(obj, target);
+}
+
+
