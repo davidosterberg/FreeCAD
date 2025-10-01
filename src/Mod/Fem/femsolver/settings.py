@@ -267,7 +267,6 @@ _SOLVER_PARAM = {
     "CodeAster": _SolverDlg(
         default="run_aster",
         param_path=_PARAM_PATH + "CodeAster",
-        use_default="UseStandardCodeAsterLocation",
         custom_path="codeasterBinaryPath",
     ),
     "ElmerSolver": _SolverDlg(
