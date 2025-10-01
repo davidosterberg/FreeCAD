@@ -35,6 +35,7 @@
 #include <QScreen>
 #include <QStatusBar>
 #include <QStyle>
+#include <QSurfaceFormat>
 #include <QTextStream>
 #include <QTimer>
 #include <QWindow>
@@ -2383,13 +2384,19 @@ void Application::runApplication()
 {
     StartupProcess::setupApplication();
 
+    QSurfaceFormat fmt;
+    fmt.setRenderableType(QSurfaceFormat::OpenGL);
+    fmt.setProfile(QSurfaceFormat::CompatibilityProfile);
+    fmt.setOption(QSurfaceFormat::DeprecatedFunctions, true);
+    QSurfaceFormat::setDefaultFormat(fmt);
+
     // A new QApplication
     Base::Console().log("Init: Creating Gui::Application and QApplication\n");
 
     int argc = App::Application::GetARGC();
     GUISingleApplication mainApp(argc, App::Application::GetARGV());
 
-#if defined(FC_OS_LINUX) || defined(FC_OS_BSD)
+#if (COIN_MAJOR_VERSION * 100 + COIN_MINOR_VERSION * 10 + COIN_MICRO_VERSION < 406) && (defined(FC_OS_LINUX) || defined(FC_OS_BSD))
     // If QT is running with native Wayland then inform Coin to use EGL
     if (QGuiApplication::platformName() == QString::fromStdString("wayland")) {
         setenv("COIN_EGL", "1", 1);

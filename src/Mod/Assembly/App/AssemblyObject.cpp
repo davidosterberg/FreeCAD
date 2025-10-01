@@ -21,13 +21,11 @@
  *                                                                          *
  ***************************************************************************/
 
-#include "PreCompiled.h"
-#ifndef _PreComp_
 #include <boost/core/ignore_unused.hpp>
 #include <cmath>
 #include <vector>
 #include <unordered_map>
-#endif
+
 
 #include <App/Application.h>
 #include <App/Datums.h>
@@ -165,7 +163,7 @@ int AssemblyObject::solve(bool enableRedo, bool updateJCS)
     }
 
     try {
-        mbdAssembly->runKINEMATIC();
+        mbdAssembly->runPreDrag();
     }
     catch (const std::exception& e) {
         FC_ERR("Solve failed: " << e.what());
@@ -288,8 +286,6 @@ void AssemblyObject::preDrag(std::vector<App::DocumentObject*> dragParts)
 
         draggedParts.push_back(part);
     }
-
-    mbdAssembly->runPreDrag();
 }
 
 void AssemblyObject::doDragStep()

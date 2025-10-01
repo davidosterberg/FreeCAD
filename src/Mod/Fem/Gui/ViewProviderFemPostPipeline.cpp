@@ -61,6 +61,9 @@ void ViewProviderFemPostPipeline::updateData(const App::Property* prop)
         updateFunctionSize();
         updateColorBars();
     }
+    else if (prop == &pipeline->MergeDuplicate) {
+        updateVtk();
+    }
 }
 
 void ViewProviderFemPostPipeline::updateFunctionSize()
@@ -110,6 +113,16 @@ bool ViewProviderFemPostPipeline::onDelete(const std::vector<std::string>& objs)
     }
 
     return ViewProviderFemPostObject::onDelete(objs);
+}
+
+void ViewProviderFemPostPipeline::beforeDelete()
+{
+    ViewProviderFemAnalysis* analyzeView = getAnalyzeView(this->getObject());
+    if (analyzeView) {
+        analyzeView->removeView(this);
+    }
+
+    ViewProviderFemPostObject::beforeDelete();
 }
 
 void ViewProviderFemPostPipeline::onSelectionChanged(const Gui::SelectionChanges& sel)
