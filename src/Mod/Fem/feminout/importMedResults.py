@@ -32,11 +32,14 @@ __url__ = "https://www.freecad.org"
 
 
 import FreeCAD
+from femsolver import settings
 
 # we need to import FreeCAD before the non FreeCAD library because of the print
 try:
     import sys
-    sys.path.append('/home/mt1tjs/software/anaconda3/lib/python3.12/site-packages') #TODO fix this
+    param_group = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/Mod/Fem/CodeAster")
+    mcPath = param_group.GetString("medcouplingPath")
+    sys.path.append(mcPath)
     import medcoupling as mc
 except Exception:
     FreeCAD.Console.PrintError(

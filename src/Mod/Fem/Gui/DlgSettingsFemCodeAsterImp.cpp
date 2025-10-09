@@ -43,6 +43,10 @@ DlgSettingsFemCodeAsterImp::DlgSettingsFemCodeAsterImp(QWidget* parent)
             &Gui::PrefFileChooser::fileNameChanged,
             this,
             &DlgSettingsFemCodeAsterImp::onfileNameChanged);
+    connect(ui->fc_medcoupling_path,
+            &Gui::PrefFileChooser::fileNameChanged,
+            this,
+            &DlgSettingsFemCodeAsterImp::onfileNameChanged);
 }
 
 DlgSettingsFemCodeAsterImp::~DlgSettingsFemCodeAsterImp() = default;
@@ -51,6 +55,7 @@ void DlgSettingsFemCodeAsterImp::saveSettings()
 {
     ui->cb_codeaster_binary_std->onSave();
     ui->fc_codeaster_binary_path->onSave();
+    ui->fc_medcoupling_path->onSave();
     ui->cb_codeaster_write_comments->onSave();
 }
 
@@ -58,6 +63,7 @@ void DlgSettingsFemCodeAsterImp::loadSettings()
 {
     ui->cb_codeaster_binary_std->onRestore();
     ui->fc_codeaster_binary_path->onRestore();
+    ui->fc_medcoupling_path->onRestore();
     ui->cb_codeaster_write_comments->onRestore();
 }
 
