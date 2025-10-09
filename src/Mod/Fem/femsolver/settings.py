@@ -103,7 +103,7 @@ def get_binary(name, silent=False):
         if not silent:
             FreeCAD.Console.PrintError(
                 "Settings solver name: {} not found in "
-                "solver settings modules _SOLVER_PARAM dictionary.\n".format(name)
+                "solver settings modules _SOLVER_PARAM dirctionary.\n".format(name)
             )
         return None
 
@@ -278,11 +278,6 @@ _SOLVER_PARAM = {
         default="ElmerGrid",
         param_path=_PARAM_PATH + "Elmer",
         custom_path="gridBinaryPath",
-    ),
-    "Medcoupling": _SolverDlg(
-        default="",
-        param_path=_PARAM_PATH + "Medcoupling",
-        custom_path="medcouplingPath",
     ),
     "Mystran": _SolverDlg(
         default="mystran",
