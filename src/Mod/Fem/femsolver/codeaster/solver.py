@@ -65,6 +65,9 @@ class Proxy(solverbase.Proxy):
         obj.addProperty("App::PropertyEnumeration", "AnalysisType", "Fem", "Type of the analysis")
         obj.AnalysisType = ANALYSIS_TYPES
         obj.AnalysisType = ANALYSIS_TYPES[0]
+        obj.addProperty("App::PropertyPrecision", "SolverPrecision", "Fem", 
+        "Precision of solver (a smaller number will quite with an error if this accuracy can't be met)")
+        obj.SolverPrecision = 1e-6
 
     def createMachine(self, obj, directory, testmode=False):
         return run.Machine(

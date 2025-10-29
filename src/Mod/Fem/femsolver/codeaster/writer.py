@@ -101,7 +101,8 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         commtxt += "                       CHAM_MATER=fieldmat,\n"
         commtxt += "                       EXCIT=(_F(CHARGE={}),\n".format(self.fixes[0])
         commtxt += "                              _F(CHARGE={})),\n".format(self.forces[0])
-        commtxt += "                       MODELE=model)\n\n"
+        commtxt += "                       MODELE=model,\n"
+        commtxt += "                       SOLVEUR=_F(RESI_RELA = {}))\n\n".format(self.solver_obj.SolverPrecision)
 
         commtxt += "IMPR_RESU(RESU=_F(CARA_ELEM=elemprop,\n"
         commtxt += "                  INFO_MAILLAGE='OUI',\n"
