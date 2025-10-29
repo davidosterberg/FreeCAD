@@ -105,6 +105,11 @@ public:
         Clip        = 4,  /**< Clip objects using a lasso. */
     };
 
+    enum class ClarifySelectionMode {
+        Default,    /**< Long press with LMB to trigger clarify selection */
+        Ctrl        /**< Long press with Ctrl+LMB to trigger clarify selection */
+    };
+
     enum OrbitStyle {
         Turntable,
         Trackball,
@@ -192,6 +197,8 @@ public:
 
     bool isDraggerUnderCursor(const SbVec2s pos) const;
 
+    virtual ClarifySelectionMode clarifySelectionMode() const { return ClarifySelectionMode::Default; }
+
     void setOrbitStyle(OrbitStyle style);
     OrbitStyle getOrbitStyle() const;
 
@@ -247,6 +254,8 @@ protected:
     virtual void openPopupMenu(const SbVec2s& position);
 
 private:
+    void spinInternal(const SbVec2f & pointerpos, const SbVec2f & lastpos);
+    void spinSimplifiedInternal(const SbVec2f curpos, const SbVec2f prevpos);
     bool isNavigationStyleAction(QAction* action, QActionGroup* navMenuGroup) const;
     QWidget* findView3DInventorWidget() const;
     void applyNavigationStyleChange(QAction* selectedAction);
@@ -353,6 +362,7 @@ public:
     ~InventorNavigationStyle() override;
     const char* mouseButtons(ViewerMode) override;
     std::string userFriendlyName() const override;
+    ClarifySelectionMode clarifySelectionMode() const override { return ClarifySelectionMode::Ctrl; }
 
 protected:
     SbBool processSoEvent(const SoEvent * const ev) override;
@@ -492,6 +502,7 @@ public:
     OpenSCADNavigationStyle();
     ~OpenSCADNavigationStyle() override;
     const char* mouseButtons(ViewerMode) override;
+    ClarifySelectionMode clarifySelectionMode() const override { return ClarifySelectionMode::Ctrl; }
 
 protected:
     SbBool processSoEvent(const SoEvent * const ev) override;
