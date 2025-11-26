@@ -20,12 +20,11 @@
       <location filename="../../../CommandInsertLink.py" line="56"/>
       <source>&lt;p&gt;Inserts a component into the active assembly. This will create dynamic links to parts, bodies, primitives, and assemblies. To insert external components, make sure that the file is &lt;b&gt;open in the current session&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Insert by left clicking items in the list.&lt;/li&gt;&lt;li&gt;Remove by right clicking items in the list.&lt;/li&gt;&lt;li&gt;Press shift to add several instances of the component while clicking on the view.&lt;/li&gt;&lt;/ul&gt;</source>
       <translation>Insère un composant dans l'assemblage actif.
-Cela créera des liens dynamiques vers les pièces, les corps, les primitives et les assemblages. Pour
-insérer des composants externes, s'assurer que le fichier est &lt;b&gt;ouvert dans la session en cours&lt;/b&gt;
+Cela créera des liens dynamiques vers les pièces, les corps, les primitives et les assemblages. Pour insérer des composants externes,
+s'assurer que le fichier est &lt;b&gt;ouvert dans la session en cours&lt;/b&gt;
 - Insérer en cliquant avec le bouton gauche de la souris sur les éléments de la liste.
 - Supprimer en cliquant avec le bouton droit de la souris sur les éléments de la liste.
-- Appuyer sur la touche Maj pour ajouter plusieurs instances du composant tout en cliquant sur la
-vue.</translation>
+- Appuyer sur la touche Maj pour ajouter plusieurs instances du composant tout en cliquant sur la vue.</translation>
     </message>
     <message>
       <location filename="../../../CommandInsertLink.py" line="81"/>
@@ -54,37 +53,37 @@ vue.</translation>
       <translation>Assemblage</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="138"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="140"/>
       <source>Active object</source>
       <translation>Activer/désactiver l'objet</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssemblyLink.cpp" line="123"/>
+      <location filename="../../ViewProviderAssemblyLink.cpp" line="125"/>
       <source>Turn flexible</source>
       <translation>Rendre flexible</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssemblyLink.cpp" line="124"/>
+      <location filename="../../ViewProviderAssemblyLink.cpp" line="127"/>
       <source>Your sub-assembly is currently rigid. This will make it flexible instead.</source>
       <translation>Votre sous-ensemble est actuellement rigide. Ceci le rendra flexible à la place.</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssemblyLink.cpp" line="128"/>
+      <location filename="../../ViewProviderAssemblyLink.cpp" line="131"/>
       <source>Turn rigid</source>
       <translation>Rendre rigide</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssemblyLink.cpp" line="129"/>
+      <location filename="../../ViewProviderAssemblyLink.cpp" line="133"/>
       <source>Your sub-assembly is currently flexible. This will make it rigid instead.</source>
       <translation>Votre sous-ensemble est actuellement flexible. Cela le rendra rigide.</translation>
     </message>
     <message>
-      <location filename="../../../App/BomObject.cpp" line="270"/>
+      <location filename="../../../App/BomObject.cpp" line="279"/>
       <source>N/A</source>
       <translation>Non applicable</translation>
     </message>
     <message>
-      <location filename="../../../App/BomObject.cpp" line="294"/>
+      <location filename="../../../App/BomObject.cpp" line="303"/>
       <source>Not supported</source>
       <translation>Non pris en charge</translation>
     </message>
@@ -138,7 +137,7 @@ vue.</translation>
       <location filename="../../../JointObject.py" line="55"/>
       <location filename="../../../JointObject.py" line="1694"/>
       <source>Distance</source>
-      <translation>Longueur</translation>
+      <translation>Distance</translation>
     </message>
     <message>
       <location filename="../../../JointObject.py" line="56"/>
@@ -241,67 +240,71 @@ vue.</translation>
       <translation>Quantité (automatique)</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="190"/>
+      <location filename="../../../CommandCreateBom.py" line="188"/>
       <source>Default</source>
       <translation>Par défaut</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="286"/>
+      <location filename="../../../CommandCreateBom.py" line="284"/>
       <source>Duplicate Name</source>
       <translation>Dupliquer le nom</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="287"/>
+      <location filename="../../../CommandCreateBom.py" line="285"/>
       <source>This name is already used. Please choose a different name.</source>
       <translation>Ce nom est déjà utilisé, choisir un autre nom.</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="366"/>
+      <location filename="../../../CommandCreateBom.py" line="364"/>
       <source>Options</source>
       <translation>Options</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="373"/>
+      <location filename="../../../CommandCreateBom.py" line="371"/>
       <source>Sub-assembly children: the children of sub-assemblies will be included in the bill of materials</source>
-      <translation>Enfants des sous-ensembles : les enfants des sous-ensembles seront inclus dans la nomenclature.</translation>
+      <translation>Enfants des sous-ensembles : les enfants des sous-ensembles seront inclus à la nomenclature.</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="379"/>
+      <location filename="../../../CommandCreateBom.py" line="377"/>
       <source>Parts children: the children of parts will be added to the bill of materials</source>
       <translation>Enfants des pièces : les enfants des pièces seront ajoutés à la nomenclature.</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="385"/>
+      <location filename="../../../CommandCreateBom.py" line="383"/>
       <source>Only parts: adds only part containers and sub-assemblies to the bill of materials. Solids like Part Design bodies, fasteners, or Part workbench primitives are ignored.</source>
-      <translation>Pièces uniquement : ajoute uniquement les conteneurs de pièces et les sous-ensembles à la nomenclature. Les solides tels que les corps de PartDesign, les fixations ou les primitives de l'atelier Part sont ignorés.</translation>
+      <translation>Pièces uniquement : ajoute uniquement les conteneurs de pièces et les sous-ensembles à la nomenclature. Les solides tels que les
+corps de PartDesign, les fixations ou les primitives de l'atelier Part sont ignorés.</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="387"/>
+      <location filename="../../../CommandCreateBom.py" line="385"/>
       <source>Columns</source>
       <translation>Colonnes</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="400"/>
+      <location filename="../../../CommandCreateBom.py" line="398"/>
       <source>Custom columns : 'Description' and other custom columns you add by clicking on 'Add column' will not have their data overwritten. If a column name starts with '.' followed by a property name (e.g. '.Length'), it will be auto-populated with that property value. These columns can be renamed by double-clicking or pressing F2 (renaming a column will currently lose its data).</source>
-      <translation>Colonnes personnalisées : les données des colonnes « Description » et autres colonnes personnalisées que vous ajoutez en cliquant sur « Ajouter une colonne » ne seront pas écrasées. Si le nom d'une colonne commence par « . » suivi d'un nom de propriété (par exemple « .Length »), elle sera automatiquement remplie avec la valeur de cette propriété. Ces colonnes peuvent être renommées en double-cliquant dessus ou en appuyant sur F2 (le renommage d'une colonne entraînera la perte de ses données).</translation>
+      <translation>Colonnes personnalisées : les données des colonnes « Description » et autres colonnes personnalisées que vous ajoutez en cliquant
+sur « Ajouter une colonne » ne seront pas écrasées. Si le nom d'une colonne commence par « . » suivi d'un nom de propriété (par
+exemple « .Length »), elle sera automatiquement remplie avec la valeur de cette propriété. Ces colonnes peuvent être renommées en
+double-cliquant dessus ou en appuyant sur F2 (le renommage d'une colonne entraînera la perte de ses données).</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="406"/>
+      <location filename="../../../CommandCreateBom.py" line="404"/>
       <source>Any column (custom or not), can be deleted by pressing the Delete key</source>
       <translation>Toute colonne (personnalisée ou non) peut être supprimée en appuyant sur la touche Supprimer.</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="408"/>
+      <location filename="../../../CommandCreateBom.py" line="406"/>
       <source>Export</source>
       <translation>Exporter</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="415"/>
+      <location filename="../../../CommandCreateBom.py" line="413"/>
       <source>The exported file format can be customized in the Spreadsheet workbench preferences</source>
       <translation>Le format du fichier exporté peut être personnalisé dans les préférences de l'atelier Spreadsheet.</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateBom.py" line="394"/>
+      <location filename="../../../CommandCreateBom.py" line="392"/>
       <source>Auto columns :  (Index, Quantity, Name...) are populated automatically. Any modification you make will be overridden. These columns cannot be renamed.</source>
       <translation>Colonnes automatiques : (Index, Quantité, Nom...) sont remplies automatiquement. Toute modification que vous apporterez sera ignorée. Ces colonnes ne peuvent pas être renommées.</translation>
     </message>
@@ -488,7 +491,7 @@ SLOPE définit la pente de la transition entre 0 et H1 et H2 à 0 à T1 et T2 re
     <message>
       <location filename="../../../InitGui.py" line="203"/>
       <source>Grounding</source>
-      <translation>Verrouillage</translation>
+      <translation>Blocage</translation>
     </message>
     <message>
       <location filename="../../../InitGui.py" line="230"/>
@@ -521,7 +524,7 @@ SLOPE définit la pente de la transition entre 0 et H1 et H2 à 0 à T1 et T2 re
     <message>
       <location filename="../../../JointObject.py" line="225"/>
       <source>This is the local coordinate system within Reference1's object that will be used for the joint</source>
-      <translation>Système de coordonnées local dans l'objet Reference1 qui sera utilisé pour la liaison</translation>
+      <translation>Système de coordonnées local dans l'objet Reference1 qui sera utilisé pour la liaison.</translation>
     </message>
     <message>
       <location filename="../../../JointObject.py" line="237"/>
@@ -537,7 +540,7 @@ SLOPE définit la pente de la transition entre 0 et H1 et H2 à 0 à T1 et T2 re
     <message>
       <location filename="../../../JointObject.py" line="271"/>
       <source>This is the local coordinate system within Reference2's object that will be used for the joint</source>
-      <translation>Système de coordonnées locales de l'objet Reference2 qui sera utilisé pour la liaison</translation>
+      <translation>Système de coordonnées locales de l'objet Reference2 qui sera utilisé pour la liaison.</translation>
     </message>
     <message>
       <location filename="../../../JointObject.py" line="283"/>
@@ -613,7 +616,8 @@ SLOPE définit la pente de la transition entre 0 et H1 et H2 à 0 à T1 et T2 re
     <message>
       <location filename="../../../JointObject.py" line="398"/>
       <source>This is the distance of the joint. It is used only by the Distance joint and Rack and Pinion (pitch radius), Screw and Gears and Belt (radius1)</source>
-      <translation>Il s'agit de la distance de la liaison. Elle n'est utilisée que par la liaison de distance et la crémaillère (rayon de pas), la vis et les engrenages et la courroie (rayon1).</translation>
+      <translation>Il s'agit de la distance de la liaison. Elle n'est utilisée que par la liaison distance et la liaison crémaillère (rayon primitif), la liaison
+hélicoïdale et la liaison engrenage et la liaison courroie (rayon1).</translation>
     </message>
     <message>
       <location filename="../../../JointObject.py" line="410"/>
@@ -631,18 +635,18 @@ SLOPE définit la pente de la transition entre 0 et H1 et H2 à 0 à T1 et T2 re
       <translation>L'objet à bloquer</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateView.py" line="259"/>
-      <location filename="../../../CommandCreateView.py" line="296"/>
+      <location filename="../../../CommandCreateView.py" line="358"/>
+      <location filename="../../../CommandCreateView.py" line="395"/>
       <source>The objects moved by the move</source>
       <translation>Les objets déplacés par le déplacement</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateView.py" line="271"/>
+      <location filename="../../../CommandCreateView.py" line="370"/>
       <source>This is the movement of the move. The end placement is the result of the start placement * this placement.</source>
       <translation>Il s'agit du mouvement du déplacement. La position finale est le résultat de la position de départ * cette position.</translation>
     </message>
     <message>
-      <location filename="../../../CommandCreateView.py" line="280"/>
+      <location filename="../../../CommandCreateView.py" line="379"/>
       <source>The type of the move</source>
       <translation>Le type de mouvement</translation>
     </message>
@@ -697,7 +701,7 @@ SLOPE définit la pente de la transition entre 0 et H1 et H2 à 0 à T1 et T2 re
     <message>
       <location filename="../panels/TaskAssemblyCreateJoint.ui" line="79"/>
       <source>Distance</source>
-      <translation>Longueur</translation>
+      <translation>Distance</translation>
     </message>
     <message>
       <location filename="../panels/TaskAssemblyCreateJoint.ui" line="103"/>
@@ -837,8 +841,10 @@ You can change this behavior at any time by either right-clicking the sub-assemb
       <translation>Détermine si les sous-assemblages insérés seront rigides ou flexibles :
 - Rigide : le sous-assemblage ajouté sera considéré comme une unité solide au sein de l'assemblage parent.
 - Flexible : le sous-assemblage ajouté permettra le mouvement des liaisons de chaque composant au sein de l'assemblage parent.
-Vous pouvez modifier ce comportement à tout moment en cliquant avec le bouton droit de la souris sur le sous-assemblage dans l'arborescence du document et en activant ou désactivant la commande
-« Rendre rigide »/« Rendre flexible », ou en modifiant sa propriété Rigid dans l'éditeur de propriétés.</translation>
+
+Vous pouvez modifier ce comportement à tout moment en cliquant avec le bouton droit de la souris sur le sous-assemblage dans
+l'arborescence du document et en activant ou désactivant la commande « Rendre rigide »/« Rendre flexible », ou en modifiant sa
+propriété Rigid dans l'éditeur de propriétés.</translation>
     </message>
     <message>
       <location filename="../panels/TaskAssemblyInsertLink.ui" line="81"/>
@@ -868,12 +874,12 @@ Les fichiers sont nommés « runPreDrag.asmt » et « dragging.log » et se trou
     <message>
       <location filename="../preferences/Assembly.ui" line="59"/>
       <source>Ground first part</source>
-      <translation>Verrouiller la première pièce</translation>
+      <translation>Bloquer la première pièce</translation>
     </message>
     <message>
       <location filename="../preferences/Assembly.ui" line="66"/>
       <source>When inserting the first part in the assembly, it can be grounded automatically</source>
-      <translation>Lors de l'insertion de la première pièce dans l'assemblage, celle-ci peut être verrouillée automatiquement.</translation>
+      <translation>Lors de l'insertion de la première pièce dans l'assemblage, celle-ci peut être bloquée automatiquement.</translation>
     </message>
     <message>
       <location filename="../preferences/Assembly.ui" line="23"/>
@@ -889,63 +895,63 @@ Les fichiers sont nommés « runPreDrag.asmt » et « dragging.log » et se trou
   <context>
     <name>AssemblyGui::ViewProviderAssembly</name>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="207"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="206"/>
       <source>The object is associated to one or more joints.</source>
       <translation>L'objet est associé à une ou plusieurs liaisons.</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="209"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="208"/>
       <source>Do you want to move the object and delete associated joints?</source>
       <translation>Voulez-vous déplacer l'objet et supprimer les liaisons associées ?</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="1006"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="1030"/>
       <source>Move part</source>
       <translation>Déplacer une pièce</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="1526"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="1575"/>
       <source>ViewProviderAssembly</source>
       <comment>and %1 more</comment>
       <translation>Fournisseur d'affichage d'Assembly</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="1543"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="1592"/>
       <source>Empty Assembly</source>
       <translation>Assemblage vide</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="1547"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="1597"/>
       <source>Over-constrained:</source>
       <translation>Esquisse sur-contrainte :</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="1554"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="1605"/>
       <source>Malformed joints:</source>
       <translation>Liaisons défectueuses :</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="1560"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="1613"/>
       <source>Redundant joints:</source>
       <translation>Liaisons redondantes :</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="1567"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="1621"/>
       <source>Partially redundant:</source>
       <translation>Esquisse avec contraintes partiellement redondantes :</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="1573"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="1629"/>
       <source>Solver failed to converge</source>
       <translation>Le solveur n'a pas pu converger</translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="1579"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="1637"/>
       <source>Under-constrained:</source>
       <translation>L'esquisse manque de contraintes :</translation>
     </message>
     <message numerus="yes">
-      <location filename="../../ViewProviderAssembly.cpp" line="1581"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="1639"/>
       <source>%n Degrees of Freedom</source>
       <translation>
         <numerusform>%n degrés de liberté</numerusform>
@@ -953,7 +959,7 @@ Les fichiers sont nommés « runPreDrag.asmt » et « dragging.log » et se trou
       </translation>
     </message>
     <message>
-      <location filename="../../ViewProviderAssembly.cpp" line="1585"/>
+      <location filename="../../ViewProviderAssembly.cpp" line="1643"/>
       <source>Fully constrained</source>
       <translation>Esquisse entièrement contrainte</translation>
     </message>
@@ -963,15 +969,14 @@ Les fichiers sont nommés « runPreDrag.asmt » et « dragging.log » et se trou
     <message>
       <location filename="../../../CommandCreateJoint.py" line="318"/>
       <source>Screw Joint</source>
-      <translation>Créer une liaison hélicoïdale</translation>
+      <translation>Liaison hélicoïdale</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="324"/>
       <source>&lt;p&gt;Creates a screw joint that links a part with a sliding joint to a part with a revolute joint&lt;/p&gt;&lt;p&gt;Select the same coordinate systems as the revolute and sliding joints. The pitch radius defines the movement ratio between the rotating screw and the sliding part.&lt;/p&gt;</source>
-      <translation>Crée une liaison courroie entre une pièce avec une liaison glissière et une pièce avec une liaison
-pivot.
-Sélectionner les mêmes systèmes de coordonnées que pour les liaisons pivot et glissière. Le rayon
-du pas définit le rapport de mouvement entre la vis rotative et la pièce coulissante.</translation>
+      <translation>Crée une liaison courroie entre une pièce avec une liaison glissière et une pièce avec une liaison pivot.
+Sélectionner les mêmes systèmes de coordonnées que pour les liaisons pivot et glissière. Le rayon du pas définit le rapport de
+mouvement entre la vis rotative et la pièce coulissante.</translation>
     </message>
   </context>
   <context>
@@ -979,7 +984,7 @@ du pas définit le rapport de mouvement entre la vis rotative et la pièce couli
     <message>
       <location filename="../../../CommandCreateJoint.py" line="391"/>
       <source>Gears/Belt Joint</source>
-      <translation>Créer une liaison engrenage/courroie</translation>
+      <translation>Liaison engrenage/courroie</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="396"/>
@@ -1008,7 +1013,7 @@ Sélectionner les mêmes systèmes de coordonnées que pour les liaisons pivots.
     <message>
       <location filename="../panels/TaskAssemblyCreateView.ui" line="42"/>
       <source>Align Dragger</source>
-      <translation>Alignez le manipulateur</translation>
+      <translation>Aligner le manipulateur</translation>
     </message>
     <message>
       <location filename="../panels/TaskAssemblyCreateView.ui" line="49"/>
@@ -1018,7 +1023,7 @@ Sélectionner les mêmes systèmes de coordonnées que pour les liaisons pivots.
     <message>
       <location filename="../panels/TaskAssemblyCreateView.ui" line="56"/>
       <source>Explode Radially</source>
-      <translation>Explosez radialement</translation>
+      <translation>Exploser radialement</translation>
     </message>
     <message>
       <location filename="../panels/TaskAssemblyCreateBom.ui" line="23"/>
@@ -1048,7 +1053,8 @@ Sélectionner les mêmes systèmes de coordonnées que pour les liaisons pivots.
     <message>
       <location filename="../panels/TaskAssemblyCreateBom.ui" line="58"/>
       <source>Adds only part containers and sub-assemblies to the bill of materials. Solids (e.g. bodies, fasteners, primitives) are excluded.</source>
-      <translation>Ajoute uniquement les conteneurs de pièces et les sous-ensembles à la nomenclature. Les solides (par exemple, les corps, les fixations, les primitives) sont exclus.</translation>
+      <translation>Ajoute uniquement les conteneurs de pièces et les sous-ensembles à la nomenclature. Les solides (par exemple, les corps, les
+fixations, les primitives) sont exclus.</translation>
     </message>
     <message>
       <location filename="../panels/TaskAssemblyCreateBom.ui" line="61"/>
@@ -1081,7 +1087,7 @@ Sélectionner les mêmes systèmes de coordonnées que pour les liaisons pivots.
     <message>
       <location filename="../../../CommandCreateBom.py" line="69"/>
       <source>Bill of Materials</source>
-      <translation>Nomenclature</translation>
+      <translation>Créer une nomenclature</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateBom.py" line="76"/>
@@ -1099,7 +1105,7 @@ lors du recalcul. Les colonnes « Description » et personnalisées ne sont pas 
   <context>
     <name>Assembly::AssemblyLink</name>
     <message>
-      <location filename="../../../App/AssemblyLink.cpp" line="584"/>
+      <location filename="../../../App/AssemblyLink.cpp" line="651"/>
       <source>Joints</source>
       <translation>Liaisons</translation>
     </message>
@@ -1107,7 +1113,7 @@ lors du recalcul. Les colonnes « Description » et personnalisées ne sont pas 
   <context>
     <name>Command</name>
     <message>
-      <location filename="../../ViewProviderAssemblyLink.cpp" line="135"/>
+      <location filename="../../ViewProviderAssemblyLink.cpp" line="139"/>
       <source>Toggle Rigid</source>
       <translation>Activer/désactiver vers rigide</translation>
     </message>
@@ -1150,7 +1156,7 @@ lors du recalcul. Les colonnes « Description » et personnalisées ne sont pas 
     <message>
       <location filename="../panels/TaskAssemblyCreateSimulation.ui" line="89"/>
       <source>Simulation Settings</source>
-      <translation>Paramètres de simulation</translation>
+      <translation>Paramètres de la simulation</translation>
     </message>
     <message>
       <location filename="../panels/TaskAssemblyCreateSimulation.ui" line="95"/>
@@ -1183,7 +1189,7 @@ lors du recalcul. Les colonnes « Description » et personnalisées ne sont pas 
       <location filename="../panels/TaskAssemblyCreateSimulation.ui" line="132"/>
       <location filename="../panels/TaskAssemblyCreateSimulation.ui" line="139"/>
       <source>Time step</source>
-      <translation>Pas de temps</translation>
+      <translation>Intervalle de temps</translation>
     </message>
     <message>
       <location filename="../panels/TaskAssemblyCreateSimulation.ui" line="149"/>
@@ -1257,7 +1263,7 @@ lors du recalcul. Les colonnes « Description » et personnalisées ne sont pas 
     <message>
       <location filename="../../../CommandCreateAssembly.py" line="54"/>
       <source>Creates an assembly object in the current document, or in the current active assembly (if any). Limit of one root assembly per file.</source>
-      <translation>Crée un assemblage dans l'actuel document ou dans l'assemblage actif en cours (le cas échéant). Un seul assemblage racine par fichier est autorisé.</translation>
+      <translation>Crée un assemblage dans l'actuel document ou dans l'assemblage actif (le cas échéant). Un seul assemblage racine par fichier est autorisé.</translation>
     </message>
   </context>
   <context>
@@ -1266,12 +1272,12 @@ lors du recalcul. Les colonnes « Description » et personnalisées ne sont pas 
       <location filename="../../../CommandCreateAssembly.py" line="101"/>
       <location filename="../../../CommandCreateAssembly.py" line="135"/>
       <source>Activate Assembly</source>
-      <translation>Activer l'assemblage</translation>
+      <translation>Activer un assemblage</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateAssembly.py" line="106"/>
       <source>Select an assembly to activate:</source>
-      <translation>Sélectionnez un assemblage à activer :</translation>
+      <translation>Sélectionner un assemblage à activer :</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateAssembly.py" line="138"/>
@@ -1284,15 +1290,15 @@ lors du recalcul. Les colonnes « Description » et personnalisées ne sont pas 
     <message>
       <location filename="../../../CommandCreateJoint.py" line="77"/>
       <source>Fixed Joint</source>
-      <translation>Créer une liaison fixe</translation>
+      <translation>Liaison fixe</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="83"/>
       <source>&lt;p&gt;1 - If an assembly is active : Creates a joint permanently locking two parts together, preventing any movement or rotation&lt;/p&gt;&lt;p&gt;2 - If a part is active: Positions sub-parts by matching selected coordinate systems. The second part selected will move.&lt;/p&gt;</source>
-      <translation>1 - Si un assemblage est actif : crée une liaison immobilisant définitivement deux pièces ensemble,
-empêchant tout mouvement ou rotation.
-2 - Si une pièce est active : positionne les sous-pièces en faisant correspondre les systèmes de
-coordonnées sélectionnés. La deuxième pièce sélectionnée se déplacera.</translation>
+      <translation>1 - Si un assemblage est actif : crée une liaison immobilisant définitivement deux pièces ensemble, empêchant tout mouvement ou
+rotation.
+2 - Si une pièce est active : positionne les sous-pièces en faisant correspondre les systèmes de coordonnées sélectionnés. La
+deuxième pièce sélectionnée se déplacera.</translation>
     </message>
   </context>
   <context>
@@ -1300,7 +1306,7 @@ coordonnées sélectionnés. La deuxième pièce sélectionnée se déplacera.</
     <message>
       <location filename="../../../CommandCreateJoint.py" line="104"/>
       <source>Revolute Joint</source>
-      <translation>Créer une liaison pivot</translation>
+      <translation>Liaison pivot</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="109"/>
@@ -1358,9 +1364,8 @@ coordonnées sélectionnés. La deuxième pièce sélectionnée se déplacera.</
       <location filename="../../../CommandCreateJoint.py" line="203"/>
       <source>&lt;p&gt;Creates a distance joint that fixes the distance between the selected objects&lt;/p&gt;&lt;p&gt;Creates one of several different joints based on the selection. For example, a distance of 0 between a plane and a cylinder creates a tangent joint. A distance of 0 between planes will make them co-planar.&lt;/p&gt;</source>
       <translation>Crée une liaison de distance qui fixe la distance entre les objets sélectionnés.
-Crée l'une des différentes liaisons possibles en fonction de la sélection. Par exemple, une distance
-de 0 entre un plan et un cylindre crée une liaison tangente. Une distance de 0 entre des plans les
-rendra coplanaires.</translation>
+Crée l'une des différentes liaisons possibles en fonction de la sélection. Par exemple, une distance de 0 entre un plan et un cylindre
+crée une liaison tangente. Une distance de 0 entre des plans les rendra coplanaires.</translation>
     </message>
   </context>
   <context>
@@ -1368,12 +1373,12 @@ rendra coplanaires.</translation>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="221"/>
       <source>Parallel Joint</source>
-      <translation>Créer une liaison parallèle</translation>
+      <translation>Liaison parallèle</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="226"/>
       <source>Creates a parallel joint that makes the Z-axis of the selected coordinate systems parallel</source>
-      <translation>Crée une liaison parallèle rendant l'axe Z des systèmes de coordonnées sélectionnés parallèle.</translation>
+      <translation>Crée une liaison parallèle rendant l'axe Z des systèmes de coordonnées parallèle.</translation>
     </message>
   </context>
   <context>
@@ -1381,13 +1386,12 @@ rendra coplanaires.</translation>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="246"/>
       <source>Perpendicular Joint</source>
-      <translation>Raccord perpendiculaire
-Liaison perpendiculaire</translation>
+      <translation>Liaison perpendiculaire</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="251"/>
       <source>Creates a perpendicular joint that makes the Z-axis of the selected coordinate systems perpendicular</source>
-      <translation>Crée une liaison perpendiculaire rendant l'axe Z des systèmes de coordonnées sélectionnés perpendiculaire.</translation>
+      <translation>Crée une liaison perpendiculaire rendant l'axe Z des systèmes de coordonnées perpendiculaire.</translation>
     </message>
   </context>
   <context>
@@ -1395,7 +1399,7 @@ Liaison perpendiculaire</translation>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="269"/>
       <source>Angle Joint</source>
-      <translation>Créer une liaison d'angle</translation>
+      <translation>Liaison d'angle</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="274"/>
@@ -1408,7 +1412,7 @@ Liaison perpendiculaire</translation>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="294"/>
       <source>Rack and Pinion Joint</source>
-      <translation>Créer une liaison crémaillère</translation>
+      <translation>Liaison crémaillère</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="300"/>
@@ -1424,13 +1428,12 @@ primitif définit le rapport de mouvement entre la crémaillère et le pignon.</
     <message>
       <location filename="../../../CommandCreateJoint.py" line="342"/>
       <source>Gears Joint</source>
-      <translation>Créer une liaison engrenage</translation>
+      <translation>Liaison engrenage</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateJoint.py" line="348"/>
       <source>&lt;p&gt;Creates a gears joint that links 2 rotating gears together. They will have inverse rotation direction.&lt;/p&gt;&lt;p&gt;Select the same coordinate systems as the revolute joints.&lt;/p&gt;</source>
-      <translation>Crée une liaison engrenage entre deux engrenages rotatifs.
-Ceux-ci auront un sens de rotation inverse.
+      <translation>Crée une liaison engrenage entre deux engrenages rotatifs. Ceux-ci auront un sens de rotation inverse.
 Sélectionner les mêmes systèmes de coordonnées que pour les liaisons pivots.</translation>
     </message>
   </context>
@@ -1459,8 +1462,8 @@ Sélectionner les mêmes systèmes de coordonnées que pour les liaisons pivots.
       <location filename="../../../CommandCreateJoint.py" line="435"/>
       <source>&lt;p&gt;Toggles the grounding of a part.&lt;/p&gt;&lt;p&gt;Grounding a part permanently locks its position in the assembly, preventing any movement or rotation. You need at least one grounded part before starting to assemble.</source>
       <translation>Active ou désactive le blocage d'une pièce.
-Le blocage d'une pièce immobilise définitivement sa position dans l'assemblage, empêchant tout
-mouvement ou rotation. Il faut au moins une pièce à bloquer avant de commencer l'assemblage.</translation>
+Le blocage d'une pièce immobilise définitivement sa position dans l'assemblage, empêchant tout mouvement ou rotation. Il faut au
+moins une pièce à bloquer avant de commencer l'assemblage.</translation>
     </message>
   </context>
   <context>
@@ -1468,7 +1471,7 @@ mouvement ou rotation. Il faut au moins une pièce à bloquer avant de commencer
     <message>
       <location filename="../../../CommandCreateSimulation.py" line="67"/>
       <source>Simulation</source>
-      <translation>Simulation</translation>
+      <translation>Créer une simulation</translation>
     </message>
     <message>
       <location filename="../../../CommandCreateSimulation.py" line="72"/>
@@ -1496,31 +1499,42 @@ mouvement ou rotation. Il faut au moins une pièce à bloquer avant de commencer
       <source>Insert Component</source>
       <translation>Insérer un composant</translation>
     </message>
+    <message>
+      <location filename="../../../CommandInsertLink.py" line="202"/>
+      <source>Partially loaded</source>
+      <translation type="unfinished">Partially loaded</translation>
+    </message>
+    <message>
+      <location filename="../../../CommandInsertLink.py" line="556"/>
+      <source>Fully load document</source>
+      <translation type="unfinished">Fully load document</translation>
+    </message>
   </context>
   <context>
     <name>AssemblyGui::TaskAssemblyMessages</name>
     <message>
-      <location filename="../../TaskAssemblyMessages.cpp" line="37"/>
+      <location filename="../../TaskAssemblyMessages.cpp" line="38"/>
       <source>Solver messages</source>
       <translation>Messages du solveur</translation>
     </message>
     <message>
-      <location filename="../../TaskAssemblyMessages.cpp" line="54"/>
+      <location filename="../../TaskAssemblyMessages.cpp" line="56"/>
       <source>Click to select these conflicting joints.</source>
       <translation>Cliquer pour sélectionner ces liaisons problématiques</translation>
     </message>
     <message>
-      <location filename="../../TaskAssemblyMessages.cpp" line="57"/>
+      <location filename="../../TaskAssemblyMessages.cpp" line="59"/>
       <source>Click to select these redundant joints.</source>
       <translation>Cliquer pour sélectionner ces liaisons redondantes</translation>
     </message>
     <message>
-      <location filename="../../TaskAssemblyMessages.cpp" line="60"/>
+      <location filename="../../TaskAssemblyMessages.cpp" line="63"/>
       <source>The assembly has unconstrained components giving rise to those Degrees Of Freedom. Click to select these unconstrained components.</source>
-      <translation>L'assemblage a des composants non contraints donnant naissance à ces degrés de liberté. Cliquer pour sélectionner ces composants sans contrainte.</translation>
+      <translation>L'assemblage a des composants non contraints donnant naissance à ces degrés de liberté. Cliquer pour sélectionner ces composants
+sans contrainte.</translation>
     </message>
     <message>
-      <location filename="../../TaskAssemblyMessages.cpp" line="64"/>
+      <location filename="../../TaskAssemblyMessages.cpp" line="68"/>
       <source>Click to select these malformed joints.</source>
       <translation>Cliquer pour sélectionner ces liaisons défectueuses</translation>
     </message>

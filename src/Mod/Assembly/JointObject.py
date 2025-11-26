@@ -1555,6 +1555,14 @@ class TaskAssemblyCreateJoint(QtCore.QObject):
     def autoClosedOnTransactionChange(self):
         self.reject()
 
+    def autoClosedOnDeletedDocument(self):
+        global activeTask
+        activeTask = None
+        Gui.Selection.removeSelectionGate()
+        Gui.Selection.removeObserver(self)
+        Gui.Selection.setSelectionStyle(Gui.Selection.SelectionStyle.NormalSelection)
+        App.closeActiveTransaction(True)
+
     def deactivate(self):
         global activeTask
         activeTask = None
@@ -1813,8 +1821,8 @@ class TaskAssemblyCreateJoint(QtCore.QObject):
             try:
                 # Use a set to handle cases where both refs point to the same object
                 parts_to_isolate = {
-                    UtilsAssembly.getObject(self.refs[0]),
-                    UtilsAssembly.getObject(self.refs[1]),
+                    self.getMovingPart(self.refs[0]),
+                    self.getMovingPart(self.refs[1]),
                 }
                 assembly_vobj.isolateComponents(list(parts_to_isolate), isolate_mode)
             except Exception as e:
@@ -1837,8 +1845,8 @@ class TaskAssemblyCreateJoint(QtCore.QObject):
         Gui.Selection.addSelection(ref2[0].Document.Name, ref2[0].Name, ref2[1][0])
 
         self.jForm.angleSpinbox.setProperty("rawValue", self.joint.Angle.Value)
-        self.jForm.distanceSpinbox.setProperty("rawValue", self.joint.Distance)
-        self.jForm.distanceSpinbox2.setProperty("rawValue", self.joint.Distance2)
+        self.jForm.distanceSpinbox.setProperty("rawValue", self.joint.Distance.Value)
+        self.jForm.distanceSpinbox2.setProperty("rawValue", self.joint.Distance2.Value)
         self.jForm.offsetSpinbox.setProperty("rawValue", self.joint.Offset2.Base.z)
         self.jForm.rotationSpinbox.setProperty(
             "rawValue", self.joint.Offset2.Rotation.getYawPitchRoll()[0]
@@ -1848,8 +1856,8 @@ class TaskAssemblyCreateJoint(QtCore.QObject):
         self.jForm.limitCheckbox2.setChecked(self.joint.EnableLengthMax)
         self.jForm.limitCheckbox3.setChecked(self.joint.EnableAngleMin)
         self.jForm.limitCheckbox4.setChecked(self.joint.EnableAngleMax)
-        self.jForm.limitLenMinSpinbox.setProperty("rawValue", self.joint.LengthMin)
-        self.jForm.limitLenMaxSpinbox.setProperty("rawValue", self.joint.LengthMax)
+        self.jForm.limitLenMinSpinbox.setProperty("rawValue", self.joint.LengthMin.Value)
+        self.jForm.limitLenMaxSpinbox.setProperty("rawValue", self.joint.LengthMax.Value)
         self.jForm.limitRotMinSpinbox.setProperty("rawValue", self.joint.AngleMin.Value)
         self.jForm.limitRotMaxSpinbox.setProperty("rawValue", self.joint.AngleMax.Value)
 

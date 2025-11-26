@@ -975,9 +975,15 @@ def makeSolverCodeAster(doc, name="SolverCodeAster"):
 def makeSolverElmer(doc, name="SolverElmer"):
     """makeSolverElmer(document, [name]):
     makes a Elmer solver object"""
-    import femsolver.elmer.solver
+    obj = doc.addObject("Fem::FemSolverObjectPython", name)
+    from femobjects import solver_elmer
 
-    obj = femsolver.elmer.solver.create(doc, name)
+    solver_elmer.SolverElmer(obj)
+    obj.SimulationType = "Steady State"
+    if FreeCAD.GuiUp:
+        from femviewprovider import view_solver_elmer
+
+        view_solver_elmer.VPSolverElmer(obj.ViewObject)
     return obj
 
 
