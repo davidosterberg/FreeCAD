@@ -1259,7 +1259,7 @@ QToolBar QToolButton {
   background-color: transparent;
   padding: @ToolbarButtonsPadding;
   outline: none;
-  border-style: none;
+  border: 1px solid transparent;
   border-radius: @InputFieldBorderRadius;
 }
 
@@ -1367,6 +1367,24 @@ QToolButton::menu-arrow:open {
 
 QToolButton::menu-arrow:hover {
   image: url(qss:@IconsLocationFolderName/arrow-down-@StylesheetIconsColor.svg);
+}
+
+/* Gui::SplitButton --------------------------------------------------------- */
+
+Gui--SplitButton QPushButton[splitRole="main"] {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+Gui--SplitButton QToolButton[splitRole="menu"] {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+Gui--SplitButton QToolButton::menu-indicator {
+    image: none;
+    border-image: none;
 }
 
 /* QCommandLinkButton -----------------------------------------------------
