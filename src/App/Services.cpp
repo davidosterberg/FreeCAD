@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: LGPL-2.1-or-later
+
 /****************************************************************************
  *                                                                          *
  *   Copyright (c) 2024 Kacper Donat <kacper@kadet.net>                     *
@@ -29,7 +30,7 @@ App::NullCenterOfMass::ofDocumentObject([[maybe_unused]] DocumentObject* object)
     return std::nullopt;
 }
 
-bool App::NullCenterOfMass::supports(DocumentObject* object) const
+bool App::NullCenterOfMass::supports(DocumentObject* /*object*/) const
 {
     return false;
 }
