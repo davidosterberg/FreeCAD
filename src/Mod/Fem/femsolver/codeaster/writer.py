@@ -33,20 +33,11 @@ from os.path import join
 
 import FreeCAD
 
-# we need to import FreeCAD before the non FreeCAD library because of the print
-#try:
-    #Import any CA specific packages
-#except Exception:
-#    FreeCAD.Console.PrintError(
-#        "Module ...not found.\n"
-#    )
-
 from . import add_mesh
 from . import add_femelement_material
 from . import add_femelement_geometry
 from . import add_con_force
 from . import add_con_fixed
-from . import add_solver_control
 from .. import writerbase
 from femmesh import gmshtools
 from .equations import elasticity_writer
@@ -114,13 +105,13 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         commfile = open(self.solverinput_file, 'w')
         commfile.write(commtxt)
         commfile.close()
-        
-        # Write updated .geo file into Gmsh folder and write. med file into SolverCodeAster folder
+
+        # Write updated .geo file into Gmsh folder and write .med file into SolverCodeAster folder
         self.tools.write_part_file()
         self.tools.write_geo()
         self.tools.get_gmsh_command()
         self.tools.run_gmsh_with_geo()
-        
+
         exfile = open(self.export_file, 'w')
         exfile.write("# Code Aster export file written from FreeCAD\n")
         exfile.write("P actions make_etude\n")
@@ -134,7 +125,7 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         exfile.write("F rmed {} R  80\n".format(self.OPmesh_file))
         exfile.write("F mess ./message R  6\n")
         exfile.close()
-        
+
         writing_time_string = "Writing time input file: {} seconds".format(
             round((time.process_time() - timestart), 2)
         )

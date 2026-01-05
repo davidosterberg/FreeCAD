@@ -30,6 +30,7 @@ __url__ = "https://www.freecad.org"
 #  \brief element geometry laminate object
 
 from . import base_femelement
+from FreeCAD import Vector
 
 
 class ElementGeometryLaminate(base_femelement.BaseFemElement):
@@ -43,27 +44,36 @@ class ElementGeometryLaminate(base_femelement.BaseFemElement):
         super().__init__(obj)
 
         obj.addProperty(
-            "App::PropertyFloatList", 
-            "Thicknesses", 
+            "App::PropertyVector",
+            "Orientation",
+            "Layup",
+            "Overall orientation vector"
+        )
+
+        obj.addProperty(
+            "App::PropertyFloatList",
+            "Thicknesses",
             "Layup",
             "List of ply thicknesses (thicknesses in mm)"
         )
         obj.addProperty(
-            "App::PropertyFloatList", 
-            "Orientations", 
+            "App::PropertyFloatList",
+            "Orientations",
             "Layup",
             "List of ply orientations (in-plane angles in degrees)"
         )
         obj.addProperty(
-            "App::PropertyMaterialList", 
-            "Materials", 
+            "App::PropertyMaterialList",
+            "Materials",
             "Layup",
             "List of materials used (autofills from Materials in Analysis object)"
         )
         obj.addProperty(
-            "App::PropertyPythonObject", 
+            "App::PropertyPythonObject",
             "Windall",
             "Layup",
             "Dictionary of elements and layups resulting from filament winding analysis"
         )
-        obj.Windall = {"elements":[], "orientationlists":[], "thicknesslists":[]}
+        obj.Windall = {"elements": [], "orientationlists": [],
+                       "thicknesslists": []}
+        obj.Orientation = Vector(1, 0, 0)
