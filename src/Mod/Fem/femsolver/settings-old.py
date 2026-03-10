@@ -33,6 +33,7 @@ string to identify the solver in question. At the moment the following solvers
 are supported:
 
     - Calculix
+    - Code Aster
     - ElmerSolver
     - Mystran
     - Z88
@@ -168,13 +169,17 @@ def get_dir_setting():
 
 def get_default_solver():
     """Return default solver name."""
-    solver_map = {
-        0: None,
-        1: "CalculiX",
-        2: "Elmer",
-        3: "Mystran",
-        4: "Z88",
-    }
+    solver_map = {0: None}
+    if get_binary("Calculix", True):
+        solver_map[1] = "CalculiX"
+    if get_binary("CodeAster", True):
+        solver_map[len(solver_map)] = "CodeAster"
+    if get_binary("ElmerSolver", True):
+        solver_map[len(solver_map)] = "Elmer"
+    if get_binary("Mystran", True):
+        solver_map[len(solver_map)] = "Mystran"
+    if get_binary("Z88", True):
+        solver_map[len(solver_map)] = "Z88"
     param_group = FreeCAD.ParamGet(_GENERAL_PARAM)
     return solver_map[param_group.GetInt("DefaultSolver", 0)]
 
@@ -202,11 +207,11 @@ class _SolverDlg:
         all settings for the specific solver.
 
     :ivar use_default:
-        Param path identifying the "use_default" setting. Only specifie the
+        Param path identifying the "use_default" setting. Only specify the
         last part as the *param_path* is prepended to this value.
 
     :ivar custom_path:
-        Param path identifying the "custom_path" setting. Only specifie the
+        Param path identifying the "custom_path" setting. Only specify the
         last part as the *param_path* is prepended to this value.
     """
 
@@ -258,6 +263,11 @@ _SOLVER_PARAM = {
         default="ccx",
         param_path=_PARAM_PATH + "Ccx",
         custom_path="ccxBinaryPath",
+    ),
+    "CodeAster": _SolverDlg(
+        default="run_aster",
+        param_path=_PARAM_PATH + "CodeAster",
+        custom_path="codeasterBinaryPath",
     ),
     "ElmerSolver": _SolverDlg(
         default="ElmerSolver",
