@@ -75,6 +75,8 @@ class _Analysis(CommandManager):
             match def_solver:
                 case "CalculiX":
                     cmd = "FEM_SolverCalculiX"
+                case "CodeAster":
+                    cmd = "FEM_SolverCodeAster"
                 case "Elmer":
                     cmd = "FEM_SolverElmer"
                 case "Mystran":
@@ -1222,6 +1224,7 @@ class _CompSolvers(CommandManager):
         self.is_active = "with_analysis"
         self.commands = [
             "FEM_SolverCalculiX",
+            "FEM_SolverCodeAster",
             "FEM_SolverElmer",
             "FEM_SolverMystran",
             "FEM_SolverZ88",
