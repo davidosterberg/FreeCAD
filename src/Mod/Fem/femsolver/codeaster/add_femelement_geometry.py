@@ -31,7 +31,8 @@ __url__ = "https://www.freecad.org"
 import FreeCAD
 
 
-def add_femelement_geometry(commtxt, ca_writer):
+def add_femelement_geometry(commtxt, ele_name, ca_writer):
+    """Function to add elements to Code Aster input file, currently only supports shell elements"""
     mat_objs = ca_writer.mat_objs
     matname = mat_objs[0].Name  # Set default material name for cases where no layup is specified
     commtxt += "# Geometric properties of element\n"
@@ -70,7 +71,7 @@ def add_femelement_geometry(commtxt, ca_writer):
                         matnames.append(mat_objs[-1].Name)
             geoms =[]
             i=0
-            for ref in shelllam_obj.References: 
+            for ref in shelllam_obj.References:
                 # TODO: work out how to create group of all elements and apply to that in case where len(shelllam_obj.References) == 0.
                 for geom in ref[1]:
                     geoms.append(geom)
@@ -82,10 +83,10 @@ def add_femelement_geometry(commtxt, ca_writer):
                 commtxt += add_layup(matname, layup)
                 lams = [matname]
                 ori_vec = shelllam_obj.Orientation
-                commtxt += add_laminate([layup], ori_vec)
+                commtxt += add_laminate([layup], ele_name, ori_vec)
                 ca_writer.tools.group_elements[ref[0].Name] = [g for g in geoms]
         else:
-                # TODO Need better way of managing material lists, at the moment the first one in the list is assumed as the default (so should be very thin, weak isotropic material) and 2nd entry in list is applied to all wound plies.   
+                # TODO Need better way of managing material lists, at the moment the first one in the list is assumed as the default (so should be very thin, weak isotropic material) and 2nd entry in list is applied to all wound plies.
             FreeCAD.Console.PrintMessage("Applying filament winding layup\n")
             matnames = []
             for mo in mat_objs:
@@ -120,7 +121,7 @@ def add_femelement_geometry(commtxt, ca_writer):
                     layups.append(layup)
                     commtxt += add_layup(layup["group"], layup)
                 commtxt += add_grps(layups)
-                commtxt += add_laminate(layups, ori_vec)
+                commtxt += add_laminate(layups, ele_name, ori_vec)
                 ca_writer.tools.group_elements[ref[0].Name] = [g for g in geoms]
 
     elif ca_writer.member.geos_shellthickness:
@@ -143,7 +144,7 @@ def add_femelement_geometry(commtxt, ca_writer):
                 commtxt += "                               ORIENTATION = 0)))\n\n"
 
             commtxt += f"# Shell elements detected, thickness {thickness}mm on item {ref[0].Name,geom}\n"
-            commtxt += f"elemprop = AFFE_CARA_ELEM(COQUE=_F(EPAIS={thickness},\n"
+            commtxt += f"{ele_name} = AFFE_CARA_ELEM(COQUE=_F(EPAIS={thickness},\n"
             commtxt += f"                                   GROUP_MA=('{ref[0].Name}', )),\n"
             commtxt += "                          MODELE=model)\n\n"
 
@@ -177,10 +178,10 @@ def add_layup(LUname, layup):
     return commtxt
 
 
-def add_laminate(layups, ori_vec):
+def add_laminate(layups, ele_name, ori_vec):
     ori_vec_str = f"({ori_vec.x}, {ori_vec.y}, {ori_vec.z})"
     commtxt = "# Shell elements detected, applying composite laminate definition\n"
-    commtxt += "elemprop = AFFE_CARA_ELEM(COQUE=(\n"
+    commtxt += f"{ele_name} = AFFE_CARA_ELEM(COQUE=(\n"
     for layup in layups:
         thicknesses, group = layup["thicknesses"], layup["group"]
         thicktot = sum(thicknesses)

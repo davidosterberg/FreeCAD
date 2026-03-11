@@ -33,17 +33,18 @@ from os.path import join
 
 import FreeCAD
 
+from femmesh import gmshtools
 from . import add_mesh
 from . import add_femelement_material
 from . import add_femelement_geometry
 from . import add_con_force
 from . import add_con_fixed
 from .. import writerbase
-from femmesh import gmshtools
 from .equations import elasticity_writer
 
 
 class FemInputWriterCodeAster(writerbase.FemInputWriter):
+    """FemInputWriter class for writing Code Aster input .comm and .export files"""
     def __init__(
         self, analysis_obj, solver_obj, mesh_obj, member, dir_name=None, mat_geo_sets=None
     ):
@@ -56,7 +57,7 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         else:
             self.basename = "Mesh"
         if self.mesh_object.GroupsOfNodes:
-            FreeCAD.Console.PrintWarning('Groups of Nodes must be set to False in {} for CA writer to be able to set groups. Changing this setting...\n'.format(self.mesh_object.Name))
+            FreeCAD.Console.PrintWarning(f'Groups of Nodes must be set to False in {self.mesh_object.Name} for CA writer to be able to set groups. Changing this setting...\n')
             self.mesh_object.GroupsOfNodes = False
         self.tools = gmshtools.GmshTools(self.mesh_object)
         self.solverinput_file = join(self.dir_name, self.basename + ".comm")
@@ -66,40 +67,60 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         self.OPmesh_file = join(self.dir_name, self.basename + ".rmed")
         self.fixes = []
         self.forces = []
+        # only use the first material object TODO deal better with multi materials
+        self.mat_objs = [ML["Object"] for ML in self.member.mats_linear]
         FreeCAD.Console.PrintLog(f"FemInputWriterCodeAster --> self.dir_name  -->  {self.dir_name}\n")
         FreeCAD.Console.PrintMessage(
-            "FemInputWriterCodeAster --> self.solverinput_file  -->  {}\n".format(self.solverinput_file)
+            f"FemInputWriterCodeAster --> self.solverinput_file  -->  {self.solverinput_file}\n"
         )
         FreeCAD.Console.PrintMessage(
-            "FemInputWriterCodeAster --> self.export_file  -->  {}\n".format(self.export_file)
+            f"FemInputWriterCodeAster --> self.export_file  -->  {self.export_file}\n"
         )
 
     def write_solver_input(self):
-
+        """Function to write the files"""
         timestart = time.process_time()
-        # only use the first material object TODO deal better with multi materials
-        self.mat_objs = [ML["Object"] for ML in self.member.mats_linear]
+        ele_name = "elemprop"
+        result_name = "reslin"
+        stress_name = "res_stress"
+        post_name = "post_stress"
+        stress2_name = "res_stress2"
+        writer_name = "writer"
+
         commtxt = "# Code Aster input comm file written from FreeCAD\n"
         commtxt += "DEBUT(LANG='EN')\n\n"
         commtxt = add_mesh.add_mesh(commtxt, self)
         commtxt = elasticity_writer.assign_elasticity_model(commtxt, self)
         commtxt = add_femelement_material.define_femelement_material(commtxt,self)
-        commtxt, matnames = add_femelement_geometry.add_femelement_geometry(commtxt, self)
+        commtxt, matnames = add_femelement_geometry.add_femelement_geometry(commtxt, ele_name, self)
         commtxt = add_femelement_material.assign_femelement_material(commtxt,matnames, self)
         commtxt = add_con_fixed.add_con_fixed(commtxt, self)
         commtxt = add_con_force.add_con_force(commtxt, self)
-        commtxt += "reslin = MECA_STATIQUE(CARA_ELEM=elemprop,\n"
-        commtxt += "                       CHAM_MATER=fieldmat,\n"
-        commtxt += "                       EXCIT=(_F(CHARGE={}),\n".format(self.fixes[0])
-        commtxt += "                              _F(CHARGE={})),\n".format(self.forces[0])
-        commtxt += "                       MODELE=model,\n"
-        commtxt += "                       SOLVEUR=_F(RESI_RELA = {}))\n\n".format(self.solver_obj.SolverPrecision)
 
-        commtxt += "IMPR_RESU(RESU=_F(CARA_ELEM=elemprop,\n"
-        commtxt += "                  INFO_MAILLAGE='OUI',\n"
-        commtxt += "                  MAILLAGE=mesh,\n"
-        commtxt += "                  RESULTAT=reslin),\n"
-        commtxt += "          UNITE=80)\n\n"
+        commtxt += f"{result_name} = MECA_STATIQUE(CARA_ELEM=elemprop,\n"
+        commtxt += "                       CHAM_MATER=fieldmat,\n"
+        commtxt += f"                       EXCIT=(_F(CHARGE={self.fixes[0]}),\n"
+        commtxt += f"                              _F(CHARGE={self.forces[0]})),\n"
+        commtxt += "                       MODELE=model,\n"
+        commtxt += f"                       SOLVEUR=_F(RESI_RELA = {self.solver_obj.SolverPrecision}))\n\n"
+
+        commtxt += f"{stress_name} = CALC_CHAMP(reuse={result_name},\n"
+        commtxt += "                        CONTRAINTE=('EFGE_NOEU', 'SIGM_ELNO'),\n"
+        commtxt += f"                        RESULTAT={result_name})\n\n"
+
+        commtxt += f"{post_name} = POST_CHAMP(EXTR_COQUE=_F(NIVE_COUCHE='INF',\n"
+        commtxt += "                                    NOM_CHAM=('SIGM_ELNO', ),\n"
+        commtxt += "                                    NUME_COUCHE=1),\n"
+        commtxt += "                         RESULTAT=reslin)\n\n"
+
+        commtxt += f"{stress2_name} = CALC_CHAMP(CONTRAINTE=('SIGM_NOEU', ),\n"
+        commtxt += f"                         RESULTAT={post_name})\n\n"
+
+        commtxt += f"{writer_name} = IMPR_RESU(RESU=_F(CARA_ELEM={ele_name},\n"
+        commtxt += "                           INFO_MAILLAGE='OUI',\n"
+        commtxt += "                           MAILLAGE=mesh,\n"
+        commtxt += f"                           RESULTAT={result_name}),\n"
+        commtxt += "                           UNITE=80)\n\n"
         commtxt += "FIN()\n"
 
         commfile = open(self.solverinput_file, 'w')
@@ -120,16 +141,14 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         exfile.write("A args \n")
         exfile.write("A memjeveux 2000.0\n")
         exfile.write("A tpmax 900.0\n")
-        exfile.write("F comm {} D  1\n".format(self.solverinput_file))
-        exfile.write("F mmed {} D  20\n".format(self.IPmesh_file))
-        exfile.write("F rmed {} R  80\n".format(self.OPmesh_file))
+        exfile.write(f"F comm {self.solverinput_file} D  1\n")
+        exfile.write(f"F mmed {self.IPmesh_file} D  20\n")
+        exfile.write(f"F rmed {self.OPmesh_file} R  80\n")
         exfile.write("F mess ./message R  6\n")
         exfile.close()
 
-        writing_time_string = "Writing time input file: {} seconds".format(
-            round((time.process_time() - timestart), 2)
-        )
-        FreeCAD.Console.PrintMessage(writing_time_string + " \n\n")
+        message = f"Writing time input file: {round((time.process_time() - timestart), 2)} seconds"
+        FreeCAD.Console.PrintMessage(message + " \n\n")
 
         return self.solverinput_file, self.export_file
 
