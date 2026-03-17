@@ -28,9 +28,7 @@ __url__ = "https://www.freecad.org"
 ## \addtogroup FEM
 #  @{
 
-from FreeCAD import Console
-
-from . import elasticity
+#from . import elasticity
 
 def assign_elasticity_model(commtxt, ca_writer):
     commtxt += "model = AFFE_MODELE(AFFE=_F(MODELISATION='DST',\n"

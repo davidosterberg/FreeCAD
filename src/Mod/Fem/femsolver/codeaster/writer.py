@@ -69,6 +69,8 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         self.forces = []
         # only use the first material object TODO deal better with multi materials
         self.mat_objs = [ML["Object"] for ML in self.member.mats_linear]
+        self.matnames =[]
+        self.commtxt = "# Code Aster input comm file written from FreeCAD\n"
         FreeCAD.Console.PrintLog(f"FemInputWriterCodeAster --> self.dir_name  -->  {self.dir_name}\n")
         FreeCAD.Console.PrintMessage(
             f"FemInputWriterCodeAster --> self.solverinput_file  -->  {self.solverinput_file}\n"
@@ -86,8 +88,9 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         post_name = "post_stress"
         stress2_name = "res_stress2"
         writer_name = "writer"
+        matnames = self.matnames
+        commtxt = self.commtxt
 
-        commtxt = "# Code Aster input comm file written from FreeCAD\n"
         commtxt += "DEBUT(LANG='EN')\n\n"
         commtxt = add_mesh.add_mesh(commtxt, self)
         commtxt = elasticity_writer.assign_elasticity_model(commtxt, self)

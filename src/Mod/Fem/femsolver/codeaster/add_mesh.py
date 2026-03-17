@@ -28,8 +28,6 @@ __url__ = "https://www.freecad.org"
 ## \addtogroup FEM
 #  @{
 
-from femmesh import meshtools
-
 
 def add_mesh(commtxt, ca_writer):
     ca_writer.tools.get_tmp_file_paths()

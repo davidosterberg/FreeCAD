@@ -32,7 +32,6 @@ __url__ = "https://www.freecad.org"
 
 
 import FreeCAD
-from femsolver import settings
 
 # we need to import FreeCAD before the non FreeCAD library because of the print
 try:
@@ -46,8 +45,6 @@ except Exception:
         "Module medcoupling not found. Cannot load med file.\n"
     )
 
-import tempfile
-import subprocess
 from . import importToolsFem
 
 fname = "FEMMeshGmsh.rmed"

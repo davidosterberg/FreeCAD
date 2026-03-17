@@ -35,6 +35,7 @@ def add_femelement_geometry(commtxt, ele_name, ca_writer):
     """Function to add elements to Code Aster input file, currently only supports shell elements"""
     mat_objs = ca_writer.mat_objs
     matname = mat_objs[0].Name  # Set default material name for cases where no layup is specified
+    lams = []
     commtxt += "# Geometric properties of element\n"
     if ca_writer.member.geos_beamsection:
         FreeCAD.Console.PrintError("Beams not yet supported for Code Aster\n")
@@ -45,7 +46,7 @@ def add_femelement_geometry(commtxt, ele_name, ca_writer):
         thicknesses = shelllam_obj.Thicknesses
         orientations = shelllam_obj.Orientations
         assert len(thicknesses) == len(orientations), f"{len(thicknesses)} ply thicknesses given, {len(orientations)} orientation angles given, these should match (i.e provide one thickness and one angle for every ply"
-        materials = shelllam_obj.Materials
+        #materials = shelllam_obj.Materials
         if len(shelllam_obj.Windall['elements']) == 0:
             FreeCAD.Console.PrintWarning("Overwriting materials list\n")
             materials = []
