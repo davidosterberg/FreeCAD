@@ -6400,7 +6400,7 @@ Aborting op creation</translation>
       <location filename="../panels/DressUpLeadInOutEdit.ui" line="60"/>
       <location filename="../panels/DressUpLeadInOutEdit.ui" line="136"/>
       <source>Radius/length</source>
-      <translation type="unfinished">Radius/length</translation>
+      <translation>Радіус/довжина</translation>
     </message>
     <message>
       <location filename="../panels/DressUpLeadInOutEdit.ui" line="80"/>
@@ -6501,7 +6501,7 @@ Aborting op creation</translation>
     <message>
       <location filename="../../../Path/Dressup/Gui/LeadInOut.py" line="251"/>
       <source>Tool controller not selected for base operation: %s</source>
-      <translation type="unfinished">Tool controller not selected for base operation: %s</translation>
+      <translation>Для базових операцій не обраний контролер інструментів: %s</translation>
     </message>
     <message>
       <location filename="../../../Path/Dressup/Gui/LeadInOut.py" line="1399"/>
@@ -7917,6 +7917,11 @@ This will not delete the toolbits contained within it.</translation>
       <location filename="../../../Path/Op/Adaptive.py" line="555"/>
       <source>Adaptive operation couldn&apos;t determine the boundary wire. Did you select base geometry?</source>
       <translation type="unfinished">Adaptive operation couldn&apos;t determine the boundary wire. Did you select base geometry?</translation>
+    </message>
+    <message>
+      <location filename="../../../Path/Post/scripts/opensbp_post.py" line="107"/>
+      <source>see property below</source>
+      <translation>властивості дивіться нижче</translation>
     </message>
   </context>
   <context>

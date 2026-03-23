@@ -315,7 +315,7 @@
       <location filename="../Dialogs/DlgCustomizeSpNavSettings.ui" line="318"/>
       <location filename="../Dialogs/DlgCustomizeSpNavSettings.ui" line="342"/>
       <source>Reverse</source>
-      <translation>Omvendt</translation>
+      <translation>Modsat</translation>
     </message>
   </context>
   <context>
@@ -5004,7 +5004,7 @@ Søjlen 'Status' viser, om dokumentet kan gendannes.</translation>
     <message>
       <location filename="../Dialogs/DlgActionsImp.cpp" line="627"/>
       <source>Removing a folder only takes effect after an application restart</source>
-      <translation type="unfinished">Removing a folder only takes effect after an application restart</translation>
+      <translation>Fjernelse af en mappe, først får virkning efter genstart af programmet</translation>
     </message>
   </context>
   <context>
@@ -9279,7 +9279,7 @@ i den aktuelle kopi vil gå tabt.
     <message>
       <location filename="../CommandDoc.cpp" line="434"/>
       <source>No selection</source>
-      <translation>Ingen valg</translation>
+      <translation>Ingen valgt</translation>
     </message>
     <message>
       <location filename="../CommandDoc.cpp" line="435"/>
@@ -13529,7 +13529,7 @@ Fortsæt?</translation>
     <message>
       <location filename="../CommandStructure.cpp" line="195"/>
       <source>Creates a variable set, which is an object that maintains a set of properties to be used as variables</source>
-      <translation type="unfinished">Creates a variable set, which is an object that maintains a set of properties to be used as variables</translation>
+      <translation>Opretter et variabelsæt, som er et objekt til vedligeholdelse af et sæt egenskaber, der kan bruges som variabler</translation>
     </message>
   </context>
   <context>
@@ -14101,7 +14101,7 @@ Fortsæt?</translation>
     <message>
       <location filename="../CommandView.cpp" line="3717"/>
       <source>Records the selection in the tree view in order to go back/forward using the navigation buttons</source>
-      <translation type="unfinished">Records the selection in the tree view in order to go back/forward using the navigation buttons</translation>
+      <translation>Gemmer valget i trævisningen, og gør det muligt at gå tilbage/frem ved hjælp af navigationsknapperne</translation>
     </message>
   </context>
   <context>

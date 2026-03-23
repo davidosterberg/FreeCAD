@@ -1006,7 +1006,7 @@ of that project, no matter if they are expanded or not.</translation>
     <message>
       <location filename="../ui/dialogProjectManager.ui" line="373"/>
       <source>Default building</source>
-      <translation type="unfinished">Default building</translation>
+      <translation>Standard bygning</translation>
     </message>
     <message>
       <location filename="../ui/dialogProjectManager.ui" line="427"/>
@@ -1623,7 +1623,7 @@ of that project, no matter if they are expanded or not.</translation>
     <message>
       <location filename="../ui/ArchNest.ui" line="46"/>
       <source>Shapes</source>
-      <translation type="unfinished">Shapes</translation>
+      <translation>Former</translation>
     </message>
     <message>
       <location filename="../ui/ArchNest.ui" line="64"/>
@@ -2226,7 +2226,7 @@ p, li { white-space: pre-wrap; }
     <message>
       <location filename="../ui/dialogWindows.ui" line="14"/>
       <source>Doors and Windows</source>
-      <translation type="unfinished">Doors and Windows</translation>
+      <translation>Døre og vinduer</translation>
     </message>
     <message>
       <location filename="../ui/dialogWindows.ui" line="20"/>
@@ -2241,7 +2241,7 @@ p, li { white-space: pre-wrap; }
     <message>
       <location filename="../ui/dialogWindows.ui" line="97"/>
       <source>Total number of doors</source>
-      <translation type="unfinished">Total number of doors</translation>
+      <translation>Total antal døre</translation>
     </message>
     <message>
       <location filename="../ui/dialogWindows.ui" line="104"/>
@@ -2846,7 +2846,7 @@ a footprint display mode</translation>
     <message>
       <location filename="../ui/preferences-archdefaults.ui" line="363"/>
       <source>Pipe diameter</source>
-      <translation type="unfinished">Pipe diameter</translation>
+      <translation>Rørdiameter</translation>
     </message>
     <message>
       <location filename="../ui/preferences-archdefaults.ui" line="466"/>
@@ -2921,7 +2921,7 @@ a footprint display mode</translation>
     <message>
       <location filename="../ui/preferences-sh3d-import.ui" line="93"/>
       <source>Doors and Windows</source>
-      <translation type="unfinished">Doors and Windows</translation>
+      <translation>Døre og vinduer</translation>
     </message>
     <message>
       <location filename="../ui/preferences-sh3d-import.ui" line="109"/>
@@ -4058,13 +4058,13 @@ The default template is located at:
       <location filename="../../bimcommands/BimRoof.py" line="64"/>
       <location filename="../../bimcommands/BimRoof.py" line="80"/>
       <source>Create Roof</source>
-      <translation type="unfinished">Create Roof</translation>
+      <translation>Opret Tag</translation>
     </message>
     <message>
       <location filename="../../ArchRoof.py" line="825"/>
       <location filename="../../bimcommands/BimRoof.py" line="91"/>
       <source>Unable to create a roof</source>
-      <translation type="unfinished">Unable to create a roof</translation>
+      <translation>Kan ikke oprette et tag</translation>
     </message>
     <message>
       <location filename="../../ArchRoof.py" line="1075"/>
@@ -4111,7 +4111,7 @@ If Run = 0 then the run is calculated so that the height is the same as the rela
       <location filename="../../ArchRoof.py" line="1068"/>
       <location filename="../../Arch.py" line="1143"/>
       <source>Roof</source>
-      <translation type="unfinished">Roof</translation>
+      <translation>Tag</translation>
     </message>
     <message>
       <location filename="../../ArchRoof.py" line="1078"/>
@@ -4126,7 +4126,7 @@ If Run = 0 then the run is calculated so that the height is the same as the rela
     <message>
       <location filename="../../ArchWindowPresets.py" line="554"/>
       <source>Door</source>
-      <translation type="unfinished">Door</translation>
+      <translation>Dør</translation>
     </message>
     <message>
       <location filename="../../ArchWindowPresets.py" line="557"/>
@@ -4447,7 +4447,7 @@ If Run = 0 then the run is calculated so that the height is the same as the rela
     <message>
       <location filename="../../ArchWindow.py" line="1651"/>
       <source>Create new Component</source>
-      <translation type="unfinished">Create new Component</translation>
+      <translation>Opret ny komponent</translation>
     </message>
     <message>
       <location filename="../../ArchWindow.py" line="1655"/>
@@ -4514,7 +4514,7 @@ If Run = 0 then the run is calculated so that the height is the same as the rela
       <location filename="../../ArchWindow.py" line="1650"/>
       <location filename="../../ArchComponent.py" line="2392"/>
       <source>Components</source>
-      <translation type="unfinished">Components</translation>
+      <translation>Komponenter</translation>
     </message>
     <message>
       <location filename="../../ArchWindow.py" line="1652"/>
@@ -4602,7 +4602,7 @@ If Run = 0 then the run is calculated so that the height is the same as the rela
       <location filename="../../ArchAxisSystem.py" line="337"/>
       <location filename="../../Arch.py" line="104"/>
       <source>Axes</source>
-      <translation type="unfinished">Axes</translation>
+      <translation>Akser</translation>
     </message>
     <message>
       <location filename="../../ArchAxisSystem.py" line="340"/>
@@ -4620,12 +4620,12 @@ If Run = 0 then the run is calculated so that the height is the same as the rela
     <message>
       <location filename="../../Arch.py" line="1651"/>
       <source>Truss</source>
-      <translation type="unfinished">Truss</translation>
+      <translation>Spær</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimTruss.py" line="97"/>
       <source>Create Truss</source>
-      <translation type="unfinished">Create Truss</translation>
+      <translation>Opret spær</translation>
     </message>
     <message>
       <location filename="../../importers/importIFClegacy.py" line="160"/>
@@ -4680,7 +4680,7 @@ If Run = 0 then the run is calculated so that the height is the same as the rela
     <message>
       <location filename="../../Arch.py" line="1473"/>
       <source>Stairs</source>
-      <translation type="unfinished">Stairs</translation>
+      <translation>Trapper</translation>
     </message>
     <message>
       <location filename="../../Arch.py" line="1597"/>
@@ -4690,7 +4690,7 @@ If Run = 0 then the run is calculated so that the height is the same as the rela
     <message>
       <location filename="../../bimcommands/BimStairs.py" line="58"/>
       <source>Create Stairs</source>
-      <translation type="unfinished">Create Stairs</translation>
+      <translation>Opret Trapper</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimMaterial.py" line="543"/>
@@ -5039,7 +5039,7 @@ If Run = 0 then the run is calculated so that the height is the same as the rela
     <message>
       <location filename="../../Arch.py" line="752"/>
       <source>Pipe</source>
-      <translation type="unfinished">Pipe</translation>
+      <translation>Rør</translation>
     </message>
     <message>
       <location filename="../../Arch.py" line="799"/>
@@ -5050,7 +5050,7 @@ If Run = 0 then the run is calculated so that the height is the same as the rela
       <location filename="../../bimcommands/BimPipe.py" line="62"/>
       <location filename="../../bimcommands/BimPipe.py" line="71"/>
       <source>Create Pipe</source>
-      <translation type="unfinished">Create Pipe</translation>
+      <translation>Opret Rør</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimPipe.py" line="106"/>
@@ -5364,7 +5364,7 @@ Floor creation aborted.</translation>
       <location filename="../../ArchComponent.py" line="2383"/>
       <location filename="../../ArchCommands.py" line="287"/>
       <source>Component</source>
-      <translation type="unfinished">Component</translation>
+      <translation>Komponent</translation>
     </message>
     <message>
       <location filename="../../ArchComponent.py" line="2076"/>
@@ -5401,7 +5401,7 @@ Floor creation aborted.</translation>
     <message>
       <location filename="../../ArchComponent.py" line="2393"/>
       <source>Fixtures</source>
-      <translation type="unfinished">Fixtures</translation>
+      <translation>Fiksturer</translation>
     </message>
     <message>
       <location filename="../../ArchComponent.py" line="2394"/>
@@ -5465,7 +5465,7 @@ Floor creation aborted.</translation>
     <message>
       <location filename="../../Arch.py" line="1228"/>
       <source>Section</source>
-      <translation type="unfinished">Section</translation>
+      <translation>Tværsnit</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimSectionPlane.py" line="65"/>
@@ -5638,7 +5638,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../Arch.py" line="1719"/>
       <source>Wall</source>
-      <translation type="unfinished">Wall</translation>
+      <translation>Væg</translation>
     </message>
     <message>
       <location filename="../../Arch.py" line="1730"/>
@@ -5650,7 +5650,7 @@ Building creation aborted.</translation>
       <location filename="../../bimcommands/BimWall.py" line="183"/>
       <location filename="../../bimcommands/BimWall.py" line="489"/>
       <source>Create Wall</source>
-      <translation type="unfinished">Create Wall</translation>
+      <translation>Opret Væg</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimWall.py" line="133"/>
@@ -5690,13 +5690,13 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../bimcommands/BimWall.py" line="378"/>
       <source>Use sketches</source>
-      <translation type="unfinished">Use sketches</translation>
+      <translation>Brug skitser</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimArchUtils.py" line="578"/>
       <location filename="../../bimcommands/BimArchUtils.py" line="603"/>
       <source>Merge Walls</source>
-      <translation type="unfinished">Merge Walls</translation>
+      <translation>Flet Vægge</translation>
     </message>
     <message>
       <location filename="../../ArchWall.py" line="709"/>
@@ -5711,7 +5711,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../ArchWall.py" line="1755"/>
       <source>Flip Direction</source>
-      <translation type="unfinished">Flip Direction</translation>
+      <translation>Vend Retning</translation>
     </message>
     <message>
       <location filename="../../ArchCommands.py" line="493"/>
@@ -5879,7 +5879,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../bimcommands/BimBuildingPart.py" line="60"/>
       <source>Create Level</source>
-      <translation type="unfinished">Create Level</translation>
+      <translation>Opret lag</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimFence.py" line="63"/>
@@ -5897,33 +5897,33 @@ Building creation aborted.</translation>
       <translation type="unfinished">Create 2D View</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="1155"/>
+      <location filename="../../ArchBuildingPart.py" line="1148"/>
       <source>Active</source>
       <translation type="unfinished">Active</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="1166"/>
+      <location filename="../../ArchBuildingPart.py" line="1159"/>
       <source>Set Working Plane</source>
       <translation>Indstil arbejdsplan</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="1176"/>
+      <location filename="../../ArchBuildingPart.py" line="1169"/>
       <source>Write Camera Position</source>
       <translation type="unfinished">Write Camera Position</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="1182"/>
+      <location filename="../../ArchBuildingPart.py" line="1175"/>
       <source>New Group</source>
-      <translation type="unfinished">New Group</translation>
+      <translation>Ny gruppe</translation>
     </message>
     <message>
       <location filename="../../ArchMaterial.py" line="100"/>
-      <location filename="../../ArchBuildingPart.py" line="1186"/>
+      <location filename="../../ArchBuildingPart.py" line="1179"/>
       <source>Reorder Children Alphabetically</source>
       <translation type="unfinished">Reorder Children Alphabetically</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="1190"/>
+      <location filename="../../ArchBuildingPart.py" line="1183"/>
       <source>Clone Level Up</source>
       <translation type="unfinished">Clone Level Up</translation>
     </message>
@@ -6203,147 +6203,147 @@ Building creation aborted.</translation>
     </message>
     <message>
       <location filename="../../ArchSectionPlane.py" line="1130"/>
-      <location filename="../../ArchBuildingPart.py" line="522"/>
+      <location filename="../../ArchBuildingPart.py" line="540"/>
       <source>The line width of this object</source>
       <translation type="unfinished">The line width of this object</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="531"/>
+      <location filename="../../ArchBuildingPart.py" line="549"/>
       <source>An optional unit to express levels</source>
       <translation type="unfinished">An optional unit to express levels</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="539"/>
+      <location filename="../../ArchBuildingPart.py" line="557"/>
       <source>A transformation to apply to the level mark</source>
       <translation type="unfinished">A transformation to apply to the level mark</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="550"/>
+      <location filename="../../ArchBuildingPart.py" line="568"/>
       <source>If true, show the level</source>
       <translation type="unfinished">If true, show the level</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="559"/>
+      <location filename="../../ArchBuildingPart.py" line="577"/>
       <source>If true, show the unit on the level tag</source>
       <translation type="unfinished">If true, show the unit on the level tag</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="569"/>
+      <location filename="../../ArchBuildingPart.py" line="587"/>
       <source>If true, display offset will affect the origin mark too</source>
       <translation type="unfinished">If true, display offset will affect the origin mark too</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="577"/>
+      <location filename="../../ArchBuildingPart.py" line="595"/>
       <source>If true, the object's label is displayed</source>
       <translation type="unfinished">If true, the object's label is displayed</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="586"/>
+      <location filename="../../ArchBuildingPart.py" line="604"/>
       <source>The font to be used for texts</source>
       <translation type="unfinished">The font to be used for texts</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="595"/>
+      <location filename="../../ArchBuildingPart.py" line="613"/>
       <source>The font size of texts</source>
       <translation type="unfinished">The font size of texts</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="606"/>
+      <location filename="../../ArchBuildingPart.py" line="624"/>
       <source>The individual face colors</source>
       <translation type="unfinished">The individual face colors</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="619"/>
+      <location filename="../../ArchBuildingPart.py" line="637"/>
       <source>If true, when activated, the working plane will automatically adapt to this level</source>
       <translation type="unfinished">If true, when activated, the working plane will automatically adapt to this level</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="630"/>
+      <location filename="../../ArchBuildingPart.py" line="648"/>
       <source>If set to True, the working plane will be kept on Auto mode</source>
       <translation type="unfinished">If set to True, the working plane will be kept on Auto mode</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="640"/>
+      <location filename="../../ArchBuildingPart.py" line="658"/>
       <source>Camera position data associated with this object</source>
       <translation type="unfinished">Camera position data associated with this object</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="652"/>
+      <location filename="../../ArchBuildingPart.py" line="670"/>
       <source>If set, the view stored in this object will be restored on double-click</source>
       <translation type="unfinished">If set, the view stored in this object will be restored on double-click</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="662"/>
+      <location filename="../../ArchBuildingPart.py" line="680"/>
       <source>If True, double-clicking this object in the tree activates it</source>
       <translation type="unfinished">If True, double-clicking this object in the tree activates it</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="676"/>
+      <location filename="../../ArchBuildingPart.py" line="694"/>
       <source>If this is enabled, the OpenInventor representation of this object will be saved in the FreeCAD file, allowing to reference it in other files in lightweight mode.</source>
       <translation type="unfinished">If this is enabled, the OpenInventor representation of this object will be saved in the FreeCAD file, allowing to reference it in other files in lightweight mode.</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="687"/>
+      <location filename="../../ArchBuildingPart.py" line="705"/>
       <source>A slot to save the OpenInventor representation of this object, if enabled</source>
       <translation type="unfinished">A slot to save the OpenInventor representation of this object, if enabled</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="701"/>
+      <location filename="../../ArchBuildingPart.py" line="719"/>
       <source>If true, show the objects contained in this Building Part will adopt these line, color and transparency settings</source>
       <translation type="unfinished">If true, show the objects contained in this Building Part will adopt these line, color and transparency settings</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="709"/>
+      <location filename="../../ArchBuildingPart.py" line="727"/>
       <source>The line width of child objects</source>
       <translation type="unfinished">The line width of child objects</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="718"/>
+      <location filename="../../ArchBuildingPart.py" line="736"/>
       <source>The line color of child objects</source>
       <translation type="unfinished">The line color of child objects</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="727"/>
+      <location filename="../../ArchBuildingPart.py" line="745"/>
       <source>The shape appearance of child objects</source>
       <translation type="unfinished">The shape appearance of child objects</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="736"/>
+      <location filename="../../ArchBuildingPart.py" line="755"/>
       <source>The transparency of child objects</source>
       <translation type="unfinished">The transparency of child objects</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="747"/>
+      <location filename="../../ArchBuildingPart.py" line="766"/>
       <source>Cut the view above this level</source>
       <translation type="unfinished">Cut the view above this level</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="757"/>
+      <location filename="../../ArchBuildingPart.py" line="776"/>
       <source>The distance between the level plane and the cut line</source>
       <translation type="unfinished">The distance between the level plane and the cut line</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="766"/>
+      <location filename="../../ArchBuildingPart.py" line="785"/>
       <source>Turn cutting on when activating this level</source>
       <translation type="unfinished">Turn cutting on when activating this level</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="779"/>
+      <location filename="../../ArchBuildingPart.py" line="798"/>
       <source>The capture box for newly created objects expressed as [XMin,YMin,ZMin,XMax,YMax,ZMax]</source>
       <translation type="unfinished">The capture box for newly created objects expressed as [XMin,YMin,ZMin,XMax,YMax,ZMax]</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="787"/>
+      <location filename="../../ArchBuildingPart.py" line="806"/>
       <source>Turns auto group box on/off</source>
       <translation type="unfinished">Turns auto group box on/off</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="795"/>
+      <location filename="../../ArchBuildingPart.py" line="814"/>
       <source>Automatically set size from contents</source>
       <translation type="unfinished">Automatically set size from contents</translation>
     </message>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="803"/>
+      <location filename="../../ArchBuildingPart.py" line="822"/>
       <source>A margin to use when autosize is turned on</source>
       <translation type="unfinished">A margin to use when autosize is turned on</translation>
     </message>
@@ -6355,7 +6355,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../ArchProfile.py" line="138"/>
       <source>Wall thickness</source>
-      <translation type="unfinished">Wall thickness</translation>
+      <translation>Væg tykkelse</translation>
     </message>
     <message>
       <location filename="../../ArchProfile.py" line="168"/>
@@ -6442,7 +6442,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../ArchProfile.py" line="514"/>
       <source>Thickness of the wall</source>
-      <translation type="unfinished">Thickness of the wall</translation>
+      <translation>Tykkelse af væggen</translation>
     </message>
     <message>
       <location filename="../../ArchProfile.py" line="535"/>
@@ -8306,7 +8306,7 @@ Building creation aborted.</translation>
   <context>
     <name>Draft</name>
     <message>
-      <location filename="../../ArchBuildingPart.py" line="1250"/>
+      <location filename="../../ArchBuildingPart.py" line="1243"/>
       <source>Writing camera position</source>
       <translation type="unfinished">Writing camera position</translation>
     </message>
@@ -8445,7 +8445,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../bimcommands/BimRoof.py" line="42"/>
       <source>Roof</source>
-      <translation type="unfinished">Roof</translation>
+      <translation>Tag</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimRoof.py" line="46"/>
@@ -8523,7 +8523,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../bimcommands/BimTruss.py" line="43"/>
       <source>Truss</source>
-      <translation type="unfinished">Truss</translation>
+      <translation>Spær</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimTruss.py" line="47"/>
@@ -8536,7 +8536,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../bimcommands/BimStairs.py" line="43"/>
       <source>Stairs</source>
-      <translation type="unfinished">Stairs</translation>
+      <translation>Trapper</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimStairs.py" line="45"/>
@@ -8562,7 +8562,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../bimcommands/BimFence.py" line="42"/>
       <source>Fence</source>
-      <translation type="unfinished">Fence</translation>
+      <translation>Hegn</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimFence.py" line="45"/>
@@ -8765,7 +8765,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../bimcommands/BimPipe.py" line="43"/>
       <source>Pipe</source>
-      <translation type="unfinished">Pipe</translation>
+      <translation>Rør</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimPipe.py" line="47"/>
@@ -8869,7 +8869,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../bimcommands/BimSectionPlane.py" line="44"/>
       <source>Section Plane</source>
-      <translation type="unfinished">Section Plane</translation>
+      <translation>Tværsnit</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimSectionPlane.py" line="48"/>
@@ -8901,7 +8901,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../bimcommands/BimWall.py" line="54"/>
       <source>Wall</source>
-      <translation type="unfinished">Wall</translation>
+      <translation>Væg</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimWall.py" line="59"/>
@@ -8914,7 +8914,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../bimcommands/BimArchUtils.py" line="540"/>
       <source>Merge Walls</source>
-      <translation type="unfinished">Merge Walls</translation>
+      <translation>Flet Vægge</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimArchUtils.py" line="543"/>
@@ -9018,7 +9018,7 @@ Building creation aborted.</translation>
     <message>
       <location filename="../../bimcommands/BimArchUtils.py" line="395"/>
       <source>Component</source>
-      <translation type="unfinished">Component</translation>
+      <translation>Komponent</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimArchUtils.py" line="399"/>
@@ -9570,7 +9570,7 @@ CTRL+PgUp to extend extrusionCTRL+PgDown to shrink extrusionCTRL+/ to switch bet
     <message>
       <location filename="../../bimcommands/BimLibrary.py" line="686"/>
       <source>Origin</source>
-      <translation>Origo</translation>
+      <translation>Nulpunkt</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimLibrary.py" line="687"/>
@@ -9909,7 +9909,7 @@ CTRL+PgUp to extend extrusionCTRL+PgDown to shrink extrusionCTRL+/ to switch bet
     <message>
       <location filename="../../bimcommands/BimProjectManager.py" line="371"/>
       <source>Axes</source>
-      <translation type="unfinished">Axes</translation>
+      <translation>Akser</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimProjectManager.py" line="385"/>
@@ -10000,7 +10000,7 @@ CTRL+PgUp to extend extrusionCTRL+PgDown to shrink extrusionCTRL+/ to switch bet
     <message>
       <location filename="../../bimcommands/BimSlab.py" line="76"/>
       <source>Slab</source>
-      <translation type="unfinished">Slab</translation>
+      <translation>Betondæk</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimTDPage.py" line="62"/>
@@ -10581,12 +10581,12 @@ Please check your FreeCAD installation or provide a custom template under menu P
     <message>
       <location filename="../../bimcommands/BimDoor.py" line="43"/>
       <source>Door</source>
-      <translation type="unfinished">Door</translation>
+      <translation>Dør</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimDoor.py" line="44"/>
       <source>Places a door at a given location</source>
-      <translation type="unfinished">Places a door at a given location</translation>
+      <translation>Placerer en dør på en given placering</translation>
     </message>
   </context>
   <context>
@@ -10712,7 +10712,7 @@ Please check your FreeCAD installation or provide a custom template under menu P
     <message>
       <location filename="../../bimcommands/BimLibrary.py" line="86"/>
       <source>Objects Library</source>
-      <translation type="unfinished">Objects Library</translation>
+      <translation>Objekt Bibliotek</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimLibrary.py" line="87"/>
@@ -10906,7 +10906,7 @@ Please check your FreeCAD installation or provide a custom template under menu P
     <message>
       <location filename="../../bimcommands/BimSketch.py" line="41"/>
       <source>Creates a new sketch in the current working plane</source>
-      <translation type="unfinished">Creates a new sketch in the current working plane</translation>
+      <translation>Opretter en ny skitse i det nuværende arbejdsplan</translation>
     </message>
   </context>
   <context>
@@ -10914,7 +10914,7 @@ Please check your FreeCAD installation or provide a custom template under menu P
     <message>
       <location filename="../../bimcommands/BimSlab.py" line="43"/>
       <source>Slab</source>
-      <translation type="unfinished">Slab</translation>
+      <translation>Betondæk</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimSlab.py" line="44"/>
@@ -11350,7 +11350,7 @@ Please check your FreeCAD installation or provide a custom template under menu P
     <message>
       <location filename="../ui/dialogSetup.ui" line="377"/>
       <source>Faces</source>
-      <translation>Ansigter</translation>
+      <translation>Flader</translation>
     </message>
     <message>
       <location filename="../ui/dialogSetup.ui" line="384"/>
@@ -11881,7 +11881,7 @@ select both the view and the page before executing the command.</translation>
     <message>
       <location filename="../../bimcommands/BimWindows.py" line="38"/>
       <source>Manage Doors and Windows</source>
-      <translation type="unfinished">Manage Doors and Windows</translation>
+      <translation>Administrer døre og vinduer</translation>
     </message>
     <message>
       <location filename="../../bimcommands/BimWindows.py" line="42"/>

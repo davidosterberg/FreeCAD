@@ -45,6 +45,8 @@
 #include <App/MappedName.h>
 #include <App/ObjectIdentifier.h>
 #include <Base/Console.h>
+#include <Base/Reader.h>
+#include <Base/TimeInfo.h>
 #include <Base/Tools.h>
 #include <Base/Vector3D.h>
 #include <Mod/Part/App/PartPyCXX.h>
@@ -117,6 +119,11 @@ SketchObject::SketchObject() : geoLastId(0)
                       "Internal Geometry",
                       App::Prop_None,
                       "Enables selection of closed profiles within a sketch as input for operations");
+    ADD_PROPERTY_TYPE(_ExternalGeoVersion,
+                      (0),
+                      "Compatibility",
+                      (App::PropertyType)(App::Prop_Hidden | App::Prop_ReadOnly),
+                      "Version of external geometry projection algorithm");
 
     Geometry.setOrderRelevant(true);
 
@@ -167,6 +174,7 @@ void SketchObject::setupObject()
             "User parameter:BaseApp/Preferences/Mod/Sketcher");
     ArcFitTolerance.setValue(hGrpp->GetFloat("ArcFitTolerance", Precision::Confusion()*10.0));
     MakeInternals.setValue(hGrpp->GetBool("MakeInternals", false));
+    _ExternalGeoVersion.setValue(1);
     inherited::setupObject();
 }
 
@@ -549,7 +557,7 @@ void SketchObject::updateGeoHistory() {
         geoHistory = std::make_unique<GeoHistory>();
     }
 
-    FC_TIME_INIT(t);
+    Base::TimeTracker tracker("updateGeoHistory");
     const auto &geos = getInternalGeometry();
     geoHistory->clear();
     for (auto geo : geos) {
@@ -561,7 +569,6 @@ void SketchObject::updateGeoHistory() {
             geoHistory->update(pend,-id);
     }
     geoHistory->finishUpdate(geoMap);
-    FC_TIME_LOG(t,"update geometry history (" << geoHistory->size() << ", " << geoMap.size()<<')');
 }
 
 // clang-format on

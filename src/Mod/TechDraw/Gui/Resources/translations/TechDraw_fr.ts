@@ -3740,12 +3740,12 @@ Si aucun objet n'est sélectionné, un navigateur de fichiers s'ouvre pour séle
     <message>
       <location filename="../../CommandDecorate.cpp" line="103"/>
       <source>No TechDraw Page</source>
-      <translation type="unfinished">No TechDraw Page</translation>
+      <translation>Il n'y a pas de page TechDraw.</translation>
     </message>
     <message>
       <location filename="../../CommandDecorate.cpp" line="104"/>
       <source>Need a TechDraw Page for this command</source>
-      <translation type="unfinished">Need a TechDraw Page for this command</translation>
+      <translation>Cette commande nécessite une page TechDraw.</translation>
     </message>
     <message>
       <location filename="../../CommandDecorate.cpp" line="173"/>
@@ -4709,7 +4709,7 @@ Les faces doivent être détectées pour utiliser les hachures, mais il peut ré
     <message>
       <location filename="../../DlgPrefsTechDrawAdvanced.ui" line="215"/>
       <source>Report progress</source>
-      <translation>Messages d'avancement</translation>
+      <translation>Rapport d'avancement</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawAdvanced.ui" line="228"/>
@@ -4780,7 +4780,9 @@ Augmenter la limite si nécessaire.</translation>
     <message>
       <location filename="../../DlgPrefsTechDrawAdvanced.ui" line="501"/>
       <source>Choose non-conflicting key bindings as some combinations of OS and navigation style key bindings may conflict with the default modifier keys for balloon dragging and view snapping override.</source>
-      <translation>Choisir des raccourcis clavier qui n'entrent pas en conflit, car certaines combinaisons de raccourcis clavier du système d'exploitation et du style de navigation peuvent entrer en conflit avec les touches de modification par défaut pour le déplacement des bulles et le remplacement de l'accrochage de la vue.</translation>
+      <translation>Choisir des raccourcis clavier qui n'entrent pas en conflit : certaines combinaisons de raccourcis clavier du système d'exploitation et du
+style de navigation peuvent entrer en conflit avec les touches de modificateur par défaut pour le déplacement des bulles et le remplacement
+de l'accrochage des vues.</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawAdvanced.ui" line="515"/>
@@ -4833,7 +4835,7 @@ seront ignorées par l'extracteur de formes.La vérification d'erreurs est plus 
     <message>
       <location filename="../../DlgPrefsTechDrawAdvanced.ui" line="512"/>
       <source>Check this box to use the default modifier keys. Uncheck this box to set a different key combination.</source>
-      <translation>Cocher cette case pour utiliser les touches de modification par défaut.
+      <translation>Cocher cette case pour utiliser les touches de modificateur par défaut.
 Décocher cette case pour définir une autre combinaison de touches.</translation>
     </message>
     <message>
@@ -4943,12 +4945,12 @@ Sinon, seuls les marques de changement, les flèches et les symboles seront affi
     <message>
       <location filename="../../DlgPrefsTechDrawAnnotation.ui" line="177"/>
       <source>Length of horizontal portion of balloon leader</source>
-      <translation>Longueur de la portion horizontale de la ligne de repère de la bulle</translation>
+      <translation>Longueur de la portion horizontale des lignes de repère des bulles</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawAnnotation.ui" line="180"/>
       <source>Balloon leader kink length</source>
-      <translation>Longueur du pli de la ligne de référence des bulles</translation>
+      <translation>Longueur du pli des lignes de référence des bulles</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawAnnotation.ui" line="192"/>
@@ -5056,8 +5058,8 @@ Sinon, seuls les marques de changement, les flèches et les symboles seront affi
 always be the right choice.  Flat or square caps are useful
 for using drawings as a 1:1 cutting guide.
 </source>
-      <translation>Forme des extrémités des lignes. La forme par défaut (ronde) est presque toujours le bon choix.  Les
-extrémités plates ou carrées sont utiles pour utiliser les dessins comme guide de découpe à l'échelle 1:1.</translation>
+      <translation>Forme des extrémités des lignes. La forme par défaut (ronde) est presque toujours le bon choix.  Les extrémités plates ou carrées sont
+utiles pour utiliser les dessins comme guide de découpe à l'échelle 1:1.</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawAnnotation.ui" line="768"/>
@@ -5427,7 +5429,7 @@ polices transparentes ou de couleur claire avec cette option.</translation>
     <message>
       <location filename="../../DlgPrefsTechDrawDimensions.ui" line="361"/>
       <source>Use system setting for number of decimals</source>
-      <translation>Utiliser les paramètres système pour le nombre de décimales</translation>
+      <translation>Utiliser les paramètres du système pour le nombre de décimales</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawDimensions.ui" line="488"/>
@@ -5534,12 +5536,12 @@ Multiplicateur de « Taille de la police »</translation>
     <message>
       <location filename="../../DlgPrefsTechDrawDimensions.ui" line="307"/>
       <source>Number of decimals if &apos;Use global decimals&apos; is not used</source>
-      <translation>Nombre de décimales si l'option « Utiliser les paramètres système pour les décimals » n'est pas utilisée.</translation>
+      <translation>Nombre de décimales si l'option « Utiliser les paramètres du système pour le nombre de décimales » n'est pas utilisée.</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawDimensions.ui" line="364"/>
       <source>Use global decimals</source>
-      <translation>Utiliser les paramètres système pour les décimals</translation>
+      <translation>Utiliser les paramètres du système pour les décimales</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawDimensions.ui" line="398"/>
@@ -5621,7 +5623,7 @@ Cela n'affecte que la barre d'outils ; tous les outils restent disponibles via l
     <message>
       <location filename="../../DlgPrefsTechDrawDimensions.ui" line="566"/>
       <source>Dimension tool diameter/radius mode</source>
-      <translation>Mode de l'outil Cote pour les diamètres/rayons</translation>
+      <translation>Mode de l'outil de cote pour les diamètres/rayons</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawDimensions.ui" line="573"/>
@@ -5908,7 +5910,10 @@ Les modifications n'ont aucun effet sur les cotes existantes.</translation>
     <message>
       <location filename="../../DlgPrefsTechDrawGeneral.ui" line="853"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Control when the view boundary frames and labels are displayed.&lt;/p&gt;&lt;p&gt;Auto: Show on hover, On: Always show, Off: Never show.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Control when the view boundary frames and labels are displayed.&lt;/p&gt;&lt;p&gt;Auto: Show on hover, On: Always show, Off: Never show.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>Contrôle l'affichage des cadres et des étiquettes des contours des vues :
+- Automatique : afficher lors du survol,
+- Activé : toujours afficher,
+- Désactivé : ne jamais afficher.</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawGeneral.ui" line="863"/>
@@ -5928,12 +5933,12 @@ Les modifications n'ont aucun effet sur les cotes existantes.</translation>
     <message>
       <location filename="../../DlgPrefsTechDrawGeneral.ui" line="878"/>
       <source>Manual</source>
-      <translation type="unfinished">Manual</translation>
+      <translation>Manuel</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawGeneral.ui" line="886"/>
       <source>View frames mode</source>
-      <translation type="unfinished">View frames mode</translation>
+      <translation>Mode d'affichage des cadres</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawGeneral.ui" line="910"/>
@@ -6055,7 +6060,7 @@ Fast, but result is a collection of short straight lines.</source>
       <location filename="../../DlgPrefsTechDrawHLR.ui" line="143"/>
       <location filename="../../DlgPrefsTechDrawHLR.ui" line="176"/>
       <source>Show hard lines</source>
-      <translation>Afficher les lignes dures</translation>
+      <translation>Afficher les lignes pleines</translation>
     </message>
     <message>
       <location filename="../../DlgPrefsTechDrawHLR.ui" line="173"/>
@@ -6262,7 +6267,7 @@ Sinon, une méthode plus précise sera utilisée.</translation>
     <message>
       <location filename="../../MDIViewPage.cpp" line="93"/>
       <source>Toggle &amp;Frames</source>
-      <translation type="unfinished">Toggle &amp;Frames</translation>
+      <translation>Activer/désactiver les &amp;cadres</translation>
     </message>
     <message>
       <location filename="../../MDIViewPage.cpp" line="96"/>
@@ -10264,7 +10269,7 @@ direction et la mesure.</translation>
       <location filename="../../CommandDecorate.cpp" line="76"/>
       <location filename="../../CommandDecorate.cpp" line="77"/>
       <source>Turn View Frames On/Off</source>
-      <translation type="unfinished">Turn View Frames On/Off</translation>
+      <translation>Activer/désactiver les affichages des cadres</translation>
     </message>
   </context>
 </TS>
