@@ -1,26 +1,5 @@
 <a href="https://freecad.org"><img src="/src/Gui/Icons/freecad.svg" height="100px" width="100px"></a>
 
-### Code Aster Integration fork
-
-Experimental integration of Code Aster finite element solver into FreeCAD. See discussion on [FreeCAD forum](https://forum.freecad.org/viewtopic.php?t=90915) * for more details.
-
-Code Aster is a Finite Element Analysis (FEA) solver. It is not currently supported by the official  version of FreeCAD, hence the need to use the custom version described above. The official website for Code Aster is here:
-
-[Code Aster official website](https://code-aster.org/)
-
-However this is arduous to install and only appears to support version 20.04 of Ubuntu Linux. A simpler way to install on Linux is to follow these steps:
-1. Install Nix package manager from: [NixOS official website](https://nixos.org/download/)
-2. Run the command:
-```
-nix build github:AMRC-Composites/nix-codeaster --extra-experimental-features nix-command --extra-experimental-features flakes
-```
-This will build Code Aster and all of its dependencies from source, so this will take some time (and considerable processing power and memory) the first time it is done. If updates are run again in future then they will be much quicker. Nix emphasises reproducibility and reliability, so it is also possible to lock this to a specific Git commit, such as:
-```
-nix build github:AMRC-Composites/nix-codeaster/9128e25bd7edeb6ab4b10927dd89399497133b0a --extra-experimental-features nix-command --extra-experimental-features flakes
-```
-3. This will create a (link to the) result folder in the Home directory. You must now enter the location of the Code Aster executable in the Edit>Preferences>FEM>CodeAster menu as shown below. NOTE: in order to access the FEM options within Preferences you must first have opened the FEM workbench in that FreeCAD session.
-    <img src="/.github/images/CApreferences.png" width="800"/>
-
 ### Your own 3D Parametric Modeler
 
 [Website](https://www.freecad.org) •
