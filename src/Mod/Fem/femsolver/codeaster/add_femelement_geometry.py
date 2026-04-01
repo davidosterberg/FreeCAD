@@ -159,10 +159,10 @@ def add_grps(layups):
     commtxt = "# Adding WindAll groups\n"
     commtxt += "grps = DEFI_GROUP(MAILLAGE=mesh, CREA_GROUP_MA = (\n"
     for layup in layups[1:]:
-        commtxt += f"                                                  _F(GROUP_MA = ('{layups[0]["group"]}',),\n"
-        commtxt += f"                                                     NUME_INIT = {layup["group"][1:]},\n"
-        commtxt += f"                                                     NUME_FIN = {layup["group"][1:]},\n"
-        commtxt += f"                                                     NOM = '{layup["group"]}'),\n"
+        commtxt += f"                                                  _F(GROUP_MA = ('{layups[0]['group']}',),\n"
+        commtxt += f"                                                     NUME_INIT = {layup['group'][1:]},\n"
+        commtxt += f"                                                     NUME_FIN = {layup['group'][1:]},\n"
+        commtxt += f"                                                     NOM = '{layup['group']}'),\n"
     commtxt += "                                                     ))\n\n"
     return commtxt
 
