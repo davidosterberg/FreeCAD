@@ -219,6 +219,7 @@ SET(FemObjects_SRCS
     femobjects/solver_calculix.py
     femobjects/solver_ccxtools.py
     femobjects/solver_elmer.py
+    femobjects/solver_z88.py
 )
 
 if(BUILD_FEM_VTK_PYTHON)
@@ -256,6 +257,7 @@ SET(FemSolver_SRCS
 SET(FemSolverCalculix_SRCS
     femsolver/calculix/__init__.py
     femsolver/calculix/calculixtools.py
+    femsolver/calculix/calculixutils.py
     femsolver/calculix/write_constraint_bodyheatsource.py
     femsolver/calculix/write_constraint_centrif.py
     femsolver/calculix/write_constraint_contact.py
@@ -361,9 +363,17 @@ SET(FemSolverMystran_SRCS
 
 SET(FemSolverZ88_SRCS
     femsolver/z88/__init__.py
-    femsolver/z88/solver.py
-    femsolver/z88/tasks.py
+    femsolver/z88/write_constraint_displacement.py
+    femsolver/z88/write_constraint_fixed.py
+    femsolver/z88/write_constraint_force.py
+    femsolver/z88/write_constraint_pressure.py
+    femsolver/z88/write_element1D.py
+    femsolver/z88/write_element2D.py
+    femsolver/z88/write_material.py
     femsolver/z88/writer.py
+    femsolver/z88/writer_list.py
+    femsolver/z88/z88tools.py
+    femsolver/z88/z88utils.py
 )
 
 SET(FemTests_SRCS
@@ -488,7 +498,7 @@ SET(FemTestsZ88Main_SRCS
 )
 
 SET(FemTestsZ88CcxcantiEleHex20_SRCS
-    femtest/data/z88/ccx_cantilever_ele_hexa20/51.txt
+    femtest/data/z88/ccx_cantilever_ele_hexa20/FemMaterial.txt
     femtest/data/z88/ccx_cantilever_ele_hexa20/z88.dyn
     femtest/data/z88/ccx_cantilever_ele_hexa20/z88elp.txt
     femtest/data/z88/ccx_cantilever_ele_hexa20/z88i1.txt
@@ -500,7 +510,7 @@ SET(FemTestsZ88CcxcantiEleHex20_SRCS
 )
 
 SET(FemTestsZ88CcxcantiEleTria6_SRCS
-    femtest/data/z88/ccx_cantilever_ele_tria6/51.txt
+    femtest/data/z88/ccx_cantilever_ele_tria6/MechanicalMaterial.txt
     femtest/data/z88/ccx_cantilever_ele_tria6/z88.dyn
     femtest/data/z88/ccx_cantilever_ele_tria6/z88elp.txt
     femtest/data/z88/ccx_cantilever_ele_tria6/z88i1.txt
@@ -512,7 +522,7 @@ SET(FemTestsZ88CcxcantiEleTria6_SRCS
 )
 
 SET(FemTestsZ88Ccxcantifl_SRCS
-    femtest/data/z88/ccx_cantilever_faceload/51.txt
+    femtest/data/z88/ccx_cantilever_faceload/FemMaterial.txt
     femtest/data/z88/ccx_cantilever_faceload/z88.dyn
     femtest/data/z88/ccx_cantilever_faceload/z88elp.txt
     femtest/data/z88/ccx_cantilever_faceload/z88i1.txt
@@ -524,7 +534,7 @@ SET(FemTestsZ88Ccxcantifl_SRCS
 )
 
 SET(FemTestsZ88Ccxcantinl_SRCS
-    femtest/data/z88/ccx_cantilever_nodeload/51.txt
+    femtest/data/z88/ccx_cantilever_nodeload/FemMaterial.txt
     femtest/data/z88/ccx_cantilever_nodeload/z88.dyn
     femtest/data/z88/ccx_cantilever_nodeload/z88elp.txt
     femtest/data/z88/ccx_cantilever_nodeload/z88i1.txt
@@ -672,6 +682,7 @@ SET(FemGuiTaskPanels_SRCS
     femtaskpanels/task_solver_calculix.py
     femtaskpanels/task_solver_ccxtools.py
     femtaskpanels/task_solver_elmer.py
+    femtaskpanels/task_solver_z88.py
 )
 
 if(BUILD_FEM_VTK_PYTHON)
@@ -744,6 +755,7 @@ SET(FemGuiViewProvider_SRCS
     femviewprovider/view_solver_calculix.py
     femviewprovider/view_solver_ccxtools.py
     femviewprovider/view_solver_elmer.py
+    femviewprovider/view_solver_z88.py
 )
 
 if(BUILD_FEM_VTK_PYTHON)
