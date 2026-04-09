@@ -24,7 +24,7 @@
 
 #include "PreCompiled.h"
 #ifndef _PreComp_
-#include <QMessageBox>
+# include <QMessageBox>
 #endif
 
 #include "DlgSettingsFemCodeAsterImp.h"
@@ -39,14 +39,18 @@ DlgSettingsFemCodeAsterImp::DlgSettingsFemCodeAsterImp(QWidget* parent)
 {
     ui->setupUi(this);
 
-    connect(ui->fc_codeaster_binary_path,
-            &Gui::PrefFileChooser::fileNameChanged,
-            this,
-            &DlgSettingsFemCodeAsterImp::onfileNameChanged);
-    connect(ui->fc_medcoupling_path,
-            &Gui::PrefFileChooser::fileNameChanged,
-            this,
-            &DlgSettingsFemCodeAsterImp::onfileNameChanged);
+    connect(
+        ui->fc_codeaster_binary_path,
+        &Gui::PrefFileChooser::fileNameChanged,
+        this,
+        &DlgSettingsFemCodeAsterImp::onfileNameChanged
+    );
+    connect(
+        ui->fc_medcoupling_path,
+        &Gui::PrefFileChooser::fileNameChanged,
+        this,
+        &DlgSettingsFemCodeAsterImp::onfileNameChanged
+    );
 }
 
 DlgSettingsFemCodeAsterImp::~DlgSettingsFemCodeAsterImp() = default;
@@ -83,11 +87,13 @@ void DlgSettingsFemCodeAsterImp::changeEvent(QEvent* e)
 void DlgSettingsFemCodeAsterImp::onfileNameChanged(QString FileName)
 {
     if (!QFileInfo::exists(FileName)) {
-        QMessageBox::critical(this,
-                              tr("File does not exist"),
-                              tr("The specified executable\n'%1'\n does not exist!\n"
-                                 "Specify another file please.")
-                                  .arg(FileName));
+        QMessageBox::critical(
+            this,
+            tr("File does not exist"),
+            tr("The specified executable\n'%1'\n does not exist!\n"
+               "Specify another file please.")
+                .arg(FileName)
+        );
     }
 }
 

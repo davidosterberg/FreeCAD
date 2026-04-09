@@ -212,7 +212,7 @@ class TestObjectOpen(unittest.TestCase):
         from femobjects.element_geometry2D import ElementGeometry2D
 
         self.assertEqual(ElementGeometry2D, doc.ElementGeometry2D.Proxy.__class__)
-        
+
         from femobjects.element_geometry_laminate import ElementGeometryLaminate
 
         self.assertEqual(ElementGeometryLaminate, doc.ElementGeometryLaminate.Proxy.__class__)

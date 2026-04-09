@@ -43,37 +43,31 @@ class ElementGeometryLaminate(base_femelement.BaseFemElement):
     def __init__(self, obj):
         super().__init__(obj)
 
-        obj.addProperty(
-            "App::PropertyVector",
-            "Orientation",
-            "Layup",
-            "Overall orientation vector"
-        )
+        obj.addProperty("App::PropertyVector", "Orientation", "Layup", "Overall orientation vector")
 
         obj.addProperty(
             "App::PropertyFloatList",
             "Thicknesses",
             "Layup",
-            "List of ply thicknesses (thicknesses in mm)"
+            "List of ply thicknesses (thicknesses in mm)",
         )
         obj.addProperty(
             "App::PropertyFloatList",
             "Orientations",
             "Layup",
-            "List of ply orientations (in-plane angles in degrees)"
+            "List of ply orientations (in-plane angles in degrees)",
         )
         obj.addProperty(
             "App::PropertyMaterialList",
             "Materials",
             "Layup",
-            "List of materials used (autofills from Materials in Analysis object)"
+            "List of materials used (autofills from Materials in Analysis object)",
         )
         obj.addProperty(
             "App::PropertyPythonObject",
             "Windall",
             "Layup",
-            "Dictionary of elements and layups resulting from filament winding analysis"
+            "Dictionary of elements and layups resulting from filament winding analysis",
         )
-        obj.Windall = {"elements": [], "orientationlists": [],
-                       "thicknesslists": []}
+        obj.Windall = {"elements": [], "orientationlists": [], "thicknesslists": []}
         obj.Orientation = Vector(1, 0, 0)

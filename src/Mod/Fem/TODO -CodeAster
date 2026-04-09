@@ -12,7 +12,7 @@ for ref in obj.References:
 	for r in ref[1]:
 		o = getattr(ref[0].Shape, r)
 		force_objs.append(o)
-	
+
 tot = 0
 for o in force_objs:
 	if type(o) == Part.Vertex:
@@ -25,8 +25,8 @@ for o in force_objs:
 print(tot)
 
 
-for getting fibre directions:		
-		
+for getting fibre directions:
+
 thicknesses = []
 elements = []
 angles = []
@@ -49,7 +49,7 @@ lam_obj.Windall = {'elements':elements, 'orientationlists':angles, 'thicknesslis
 
 obj.Windall = {'elements':[364], 'orientationlists':[[0]], 'thicknesslists':[[0.18]]}
 obj.Windall = {'elements':[], 'orientationlists':[], 'thicknesslists':[]}
-	
+
 
 
 Useful code snippets for med file reading:
@@ -62,7 +62,7 @@ OPmesh = mc.ReadMeshFromFile(fname)
 nodes = []
 for id in OPmesh.getNodeIdsInUse()[0]:
     nodes.append(Vector(OPmesh.getCoordinatesOfNode(id[0])))
-    
+
 # Read Field  data
 m = mc.ReadMeshFromFile(medfile)
 field0 = mc.GetAllFieldNames(medfile)[0]
@@ -75,10 +75,10 @@ disp = q[0].toNumPyArray()  # this gets an output we can use
 print(disp)
 
 ###!!!!!!NOTE: THIS IS USEFUL!!!!!!!
-q.getMaxValueInArray()  
+q.getMaxValueInArray()
 
-    
-## GMSH STUFF    
+
+## GMSH STUFF
 #SET MESH NAME
 OPmesh.setName('FEMMeshGmshy')
 mc.WriteUMesh(fname,OPmesh,True)

@@ -53,7 +53,7 @@ class Check(run.Check):
         self.pushStatus("Checking analysis member...\n")
         self.check_mesh_exists()
         self.check_material_exists()
-        #self.check_material_single()  # TODO: deal better with multiple materials
+        # self.check_material_single()  # TODO: deal better with multiple materials
         self.check_geos_beamsection_single()  # no multiple beamsection
         self.check_geos_shellthickness_single()  # no multiple shellsection
         self.check_geos_beamsection_and_shellthickness()  # either beams or shells
@@ -121,6 +121,7 @@ class Solve(run.Solve):
         self._process.communicate()
         self.signalAbort.remove(self._process.terminate)
 
+
 class Results(run.Results):
 
     def run(self):
@@ -135,7 +136,7 @@ class Results(run.Results):
             if femutils.is_of_type(m.Mesh, "Fem::MeshResult"):
                 self.analysis.Document.removeObject(m.Mesh.Name)
             self.analysis.Document.removeObject(m.Name)
-        #self.analysis.Document.recompute()
+        # self.analysis.Document.recompute()
 
     def load_results(self):
         self.pushStatus("Import new results...\n")
@@ -143,9 +144,11 @@ class Results(run.Results):
         if os.path.isfile(result_file):
             mesh = importMedResults.read_med_mesh(result_file)
             result_set = importMedResults.read_med_result(result_file)
-            results_name = 'CodeAsterResults'
+            results_name = "CodeAsterResults"
             res_obj = ObjectsFem.makeResultMechanical(self.analysis.Document, results_name)
-            result_mesh_object = ObjectsFem.makeMeshResult(self.analysis.Document, results_name + "_Mesh")
+            result_mesh_object = ObjectsFem.makeMeshResult(
+                self.analysis.Document, results_name + "_Mesh"
+            )
             result_mesh_object.FemMesh = mesh
             res_obj.Mesh = result_mesh_object
             res_obj = importToolsFem.fill_femresult_mechanical(res_obj, result_set)

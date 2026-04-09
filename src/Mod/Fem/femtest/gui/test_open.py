@@ -192,10 +192,12 @@ class TestObjectOpen(unittest.TestCase):
         from femviewprovider.view_element_geometry2D import VPElementGeometry2D
 
         self.assertEqual(VPElementGeometry2D, doc.ElementGeometry2D.ViewObject.Proxy.__class__)
-        
+
         from femviewprovider.view_element_geometry_laminate import VPElementGeometryLaminate
 
-        self.assertEqual(VPElementGeometryLaminate, doc.ElementGeometryLaminate.ViewObject.Proxy.__class__)
+        self.assertEqual(
+            VPElementGeometryLaminate, doc.ElementGeometryLaminate.ViewObject.Proxy.__class__
+        )
 
         from femviewprovider.view_element_rotation1D import VPElementRotation1D
 

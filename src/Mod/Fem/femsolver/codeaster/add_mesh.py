@@ -34,7 +34,7 @@ def add_mesh(commtxt, ca_writer):
     ca_writer.tools.temp_file_mesh = ca_writer.IPmesh_file
     ca_writer.tools.temp_file_geo = ca_writer.geo_file
     ca_writer.tools.update_mesh_data()
-    
+
     commtxt += "mesh = LIRE_MAILLAGE(UNITE=20)\n\n"
 
     return commtxt

@@ -26,7 +26,7 @@ P tpsjob 16
 P uclient tim
 P username tim
 P version stable
-A args 
+A args
 A memjeveux 2000.0
 A tpmax 900.0
 F comm /home/tim/aster/bin/case/testplate.comm D  1

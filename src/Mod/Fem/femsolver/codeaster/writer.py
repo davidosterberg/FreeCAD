@@ -45,6 +45,7 @@ from .equations import elasticity_writer
 
 class FemInputWriterCodeAster(writerbase.FemInputWriter):
     """FemInputWriter class for writing Code Aster input .comm and .export files"""
+
     def __init__(
         self, analysis_obj, solver_obj, mesh_obj, member, dir_name=None, mat_geo_sets=None
     ):
@@ -57,7 +58,9 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         else:
             self.basename = "Mesh"
         if self.mesh_object.GroupsOfNodes:
-            FreeCAD.Console.PrintWarning(f'Groups of Nodes must be set to False in {self.mesh_object.Name} for CA writer to be able to set groups. Changing this setting...\n')
+            FreeCAD.Console.PrintWarning(
+                f"Groups of Nodes must be set to False in {self.mesh_object.Name} for CA writer to be able to set groups. Changing this setting...\n"
+            )
             self.mesh_object.GroupsOfNodes = False
         self.tools = gmshtools.GmshTools(self.mesh_object)
         self.solverinput_file = join(self.dir_name, self.basename + ".comm")
@@ -69,9 +72,11 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         self.forces = []
         # only use the first material object TODO deal better with multi materials
         self.mat_objs = [ML["Object"] for ML in self.member.mats_linear]
-        self.matnames =[]
+        self.matnames = []
         self.commtxt = "# Code Aster input comm file written from FreeCAD\n"
-        FreeCAD.Console.PrintLog(f"FemInputWriterCodeAster --> self.dir_name  -->  {self.dir_name}\n")
+        FreeCAD.Console.PrintLog(
+            f"FemInputWriterCodeAster --> self.dir_name  -->  {self.dir_name}\n"
+        )
         FreeCAD.Console.PrintMessage(
             f"FemInputWriterCodeAster --> self.solverinput_file  -->  {self.solverinput_file}\n"
         )
@@ -94,9 +99,9 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         commtxt += "DEBUT(LANG='EN')\n\n"
         commtxt = add_mesh.add_mesh(commtxt, self)
         commtxt = elasticity_writer.assign_elasticity_model(commtxt, self)
-        commtxt = add_femelement_material.define_femelement_material(commtxt,self)
+        commtxt = add_femelement_material.define_femelement_material(commtxt, self)
         commtxt, matnames = add_femelement_geometry.add_femelement_geometry(commtxt, ele_name, self)
-        commtxt = add_femelement_material.assign_femelement_material(commtxt,matnames, self)
+        commtxt = add_femelement_material.assign_femelement_material(commtxt, matnames, self)
         commtxt = add_con_fixed.add_con_fixed(commtxt, self)
         commtxt = add_con_force.add_con_force(commtxt, self)
 
@@ -105,7 +110,9 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         commtxt += f"                       EXCIT=(_F(CHARGE={self.fixes[0]}),\n"
         commtxt += f"                              _F(CHARGE={self.forces[0]})),\n"
         commtxt += "                       MODELE=model,\n"
-        commtxt += f"                       SOLVEUR=_F(RESI_RELA = {self.solver_obj.SolverPrecision}))\n\n"
+        commtxt += (
+            f"                       SOLVEUR=_F(RESI_RELA = {self.solver_obj.SolverPrecision}))\n\n"
+        )
 
         commtxt += f"{stress_name} = CALC_CHAMP(reuse={result_name},\n"
         commtxt += "                        CONTRAINTE=('EFGE_NOEU', 'SIGM_ELNO'),\n"
@@ -126,7 +133,7 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         commtxt += "                           UNITE=80)\n\n"
         commtxt += "FIN()\n"
 
-        commfile = open(self.solverinput_file, 'w')
+        commfile = open(self.solverinput_file, "w")
         commfile.write(commtxt)
         commfile.close()
 
@@ -136,7 +143,7 @@ class FemInputWriterCodeAster(writerbase.FemInputWriter):
         self.tools.get_gmsh_command()
         self.tools.run_gmsh_with_geo()
 
-        exfile = open(self.export_file, 'w')
+        exfile = open(self.export_file, "w")
         exfile.write("# Code Aster export file written from FreeCAD\n")
         exfile.write("P actions make_etude\n")
         exfile.write("P lang en\n")

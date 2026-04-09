@@ -50,12 +50,12 @@ class _TaskPanel(base_femtaskpanel._BaseTaskPanel):
         self.parameter_widget = FreeCADGui.PySideUic.loadUi(
             FreeCAD.getHomePath() + "Mod/Fem/Resources/ui/ElementGeometryLaminate.ui"
         )
-        #QtCore.QObject.connect(
+        # QtCore.QObject.connect(
         #    self.parameter_widget.qsb_thicknesses,
         #    QtCore.SIGNAL("Base::Quantity"),
         #    self.thicknesses_changed, # THIS ISN'T WORKING!
-        #)
-        #self.init_parameter_widget() # THIS ISN'T WORKING!
+        # )
+        # self.init_parameter_widget() # THIS ISN'T WORKING!
 
         # geometry selection widget
         self.selection_widget = selection_widgets.GeometryElementsSelection(
@@ -64,9 +64,9 @@ class _TaskPanel(base_femtaskpanel._BaseTaskPanel):
 
         # form made from param and selection widget
         self.form = [self.parameter_widget, self.selection_widget]
-        
+
     def accept(self):
-        #self.obj.Thicknesses = self.thicknesses
+        # self.obj.Thicknesses = self.thicknesses
         self.obj.References = self.selection_widget.references
         self.selection_widget.finish_selection()
         return super().accept()

@@ -35,7 +35,7 @@ def add_con_fixed(commtxt, ca_writer):
     geoms = []
     for i, femobj in enumerate(ca_writer.member.cons_fixed):
         fixed_obj = femobj["Object"]
-        print('Fixed constraint: ',i, femobj, ' on: ', fixed_obj.Name)
+        print("Fixed constraint: ", i, femobj, " on: ", fixed_obj.Name)
         for ref in fixed_obj.References:
             for geom in ref[1]:
                 geoms.append(geom)
@@ -46,10 +46,13 @@ def add_con_fixed(commtxt, ca_writer):
             commtxt += "                                 DX=0.0,\n"
             commtxt += "                                 DY=0.0,\n"
             commtxt += "                                 DZ=0.0,\n"
-            commtxt += "                                 GROUP_MA=('{}', )),\n".format(fixed_obj.Name)
+            commtxt += "                                 GROUP_MA=('{}', )),\n".format(
+                fixed_obj.Name
+            )
             commtxt += "                     MODELE=model)\n\n"
-        
+
         ca_writer.tools.group_elements[fixed_obj.Name] = [g for g in geoms]
     return commtxt
+
 
 ##  @}

@@ -35,18 +35,22 @@ from FreeCAD import Units
 def define_femelement_material(commtxt, ca_writer):
     for mat_obj in ca_writer.mat_objs:
         commtxt += "# Defining materials\n"
-        if 'YoungsModulus' in mat_obj.Material.keys():
+        if "YoungsModulus" in mat_obj.Material.keys():
             if ca_writer.member.geos_shelllaminate:
-                commtxt += "# Adding isotropic material using orthotropic definition to allow composite analysis {}\n".format(mat_obj.Material['CardName'])
+                commtxt += "# Adding isotropic material using orthotropic definition to allow composite analysis {}\n".format(
+                    mat_obj.Material["CardName"]
+                )
                 E = Units.Quantity(mat_obj.Material["YoungsModulus"])
                 E = E.getValueAs("MPa").Value
                 NU = float(mat_obj.Material["PoissonRatio"])
-                G = E / (2*(1+NU))
-                if 'Density' in mat_obj.Material.keys():
+                G = E / (2 * (1 + NU))
+                if "Density" in mat_obj.Material.keys():
                     RHO = Units.Quantity(mat_obj.Material["Density"])
-                    RHO = RHO.getValueAs('t/mm^3').Value
+                    RHO = RHO.getValueAs("t/mm^3").Value
                 else:
-                    commtxt += "# No value for Density given, gravitational effects cannot be calculated\n"
+                    commtxt += (
+                        "# No value for Density given, gravitational effects cannot be calculated\n"
+                    )
                     RHO = 0
                 commtxt += "{} = DEFI_MATERIAU(ELAS_ORTH=_F(E_L={},\n".format(mat_obj.Name, E)
                 commtxt += "                                E_T={},\n".format(E)
@@ -58,54 +62,59 @@ def define_femelement_material(commtxt, ca_writer):
                 commtxt += "                                NU_LN={},\n".format(NU)
                 commtxt += "                                NU_TN={},\n".format(NU)
                 commtxt += "                                RHO={}))\n\n".format(RHO)
-                
+
             else:
-                commtxt += "# Adding isotropic material {}\n".format(mat_obj.Material['CardName'])
+                commtxt += "# Adding isotropic material {}\n".format(mat_obj.Material["CardName"])
                 E = Units.Quantity(mat_obj.Material["YoungsModulus"])
                 E = E.getValueAs("MPa").Value
                 NU = float(mat_obj.Material["PoissonRatio"])
-                if 'Density' in mat_obj.Material.keys():
+                if "Density" in mat_obj.Material.keys():
                     RHO = Units.Quantity(mat_obj.Material["Density"])
-                    RHO = RHO.getValueAs('t/mm^3').Value
+                    RHO = RHO.getValueAs("t/mm^3").Value
                 else:
-                    commtxt += "# No value for Density given, gravitational effects cannot be calculated\n"
+                    commtxt += (
+                        "# No value for Density given, gravitational effects cannot be calculated\n"
+                    )
                     RHO = 0
                 commtxt += "{} = DEFI_MATERIAU(ELAS=_F(E={},\n".format(mat_obj.Name, E)
                 commtxt += "                            NU={},\n".format(NU)
                 commtxt += "                            RHO={}))\n\n".format(RHO)
 
-            
-        elif 'YoungsModulusX' in mat_obj.Material.keys():
-            commtxt += "# Adding orthotropic material {}\n".format(mat_obj.Material['CardName'])
+        elif "YoungsModulusX" in mat_obj.Material.keys():
+            commtxt += "# Adding orthotropic material {}\n".format(mat_obj.Material["CardName"])
             E_L = Units.Quantity(mat_obj.Material["YoungsModulusX"])
             E_L = E_L.getValueAs("MPa").Value
             E_T = Units.Quantity(mat_obj.Material["YoungsModulusY"])
             E_T = E_T.getValueAs("MPa").Value
-            if 'YoungsModulusZ' in mat_obj.Material.keys():
+            if "YoungsModulusZ" in mat_obj.Material.keys():
                 E_N = Units.Quantity(mat_obj.Material["YoungsModulusZ"])
                 E_N = E_N.getValueAs("MPa").Value
             else:
-                commtxt += "# No value for through-thickness modulus given, using transverse value\n"
+                commtxt += (
+                    "# No value for through-thickness modulus given, using transverse value\n"
+                )
                 E_N = E_T
-            G_LT = Units.Quantity(mat_obj.Material['ShearModulusXY'])
+            G_LT = Units.Quantity(mat_obj.Material["ShearModulusXY"])
             G_LT = G_LT.getValueAs("MPa").Value
-            if 'ShearModulusXZ' in mat_obj.Material.keys():
-                G_LN = Units.Quantity(mat_obj.Material['ShearModulusXZ'])
+            if "ShearModulusXZ" in mat_obj.Material.keys():
+                G_LN = Units.Quantity(mat_obj.Material["ShearModulusXZ"])
                 G_LN = G_LN.getValueAs("MPa").Value
             else:
                 commtxt += "# No value for longitudinal-normal modulus given, using longitudinal-transverse value\n"
                 G_LN = G_LT
-            if 'ShearModulusYZ' in mat_obj.Material.keys():
-                G_TN = Units.Quantity(mat_obj.Material['ShearModulusXZ'])
+            if "ShearModulusYZ" in mat_obj.Material.keys():
+                G_TN = Units.Quantity(mat_obj.Material["ShearModulusXZ"])
                 G_TN = G_TN.getValueAs("MPa").Value
             else:
                 commtxt += "# No value for transverse-normal modulus given, cannot calculate through thickness results (This may result in errors during calculation\n"
             NU_LT = float(mat_obj.Material["PoissonRatioXY"])
-            if 'Density' in mat_obj.Material.keys():
+            if "Density" in mat_obj.Material.keys():
                 RHO = Units.Quantity(mat_obj.Material["Density"])
-                RHO = RHO.getValueAs('t/mm^3').Value
+                RHO = RHO.getValueAs("t/mm^3").Value
             else:
-                commtxt += "# No value for Density given, gravitational effects cannot be calculated\n"
+                commtxt += (
+                    "# No value for Density given, gravitational effects cannot be calculated\n"
+                )
                 RHO = 0
             commtxt += "{} = DEFI_MATERIAU(ELAS_ORTH=_F(E_L={},\n".format(mat_obj.Name, E_L)
             commtxt += "                                E_T={},\n".format(E_T)
@@ -115,8 +124,9 @@ def define_femelement_material(commtxt, ca_writer):
             commtxt += "                                G_TN={},\n".format(G_TN)
             commtxt += "                                NU_LT={},\n".format(NU_LT)
             commtxt += "                                RHO={}))\n\n".format(RHO)
-        
+
     return commtxt
+
 
 def assign_femelement_material(commtxt, lams, ca_writer):
     if len(lams) > 1:
@@ -132,8 +142,8 @@ def assign_femelement_material(commtxt, lams, ca_writer):
         commtxt += "fieldmat = AFFE_MATERIAU(AFFE=_F(MATER=({}, ),\n".format(lams[0])
         commtxt += "                                 TOUT='OUI'),\n"
         commtxt += "                         MAILLAGE=mesh)\n\n"
-    
 
     return commtxt
+
 
 ##  @}
