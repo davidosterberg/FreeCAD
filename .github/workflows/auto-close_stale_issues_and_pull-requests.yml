@@ -7,8 +7,6 @@
 ---
 name: 'Stale Issues'
 on:  # yamllint disable-line rule:truthy
-  schedule:
-    - cron: '0 0 * * *'  # Run at 00:00 UTC every day
   workflow_dispatch:
 
 permissions:
