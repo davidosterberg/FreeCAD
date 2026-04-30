@@ -1377,7 +1377,7 @@ CmdSketcherCreateText::CmdSketcherCreateText()
     sWhatsThis = "Sketcher_CreateText";
     sStatusTip = sToolTipText;
     sPixmap = "Sketcher_CreateText";
-    sAccel = "X, T";
+    sAccel = "G, T";
     eType = ForEdit;
 }
 
@@ -1666,7 +1666,7 @@ public:
         sToolTipText = QT_TR_NOOP("Edge editing tools");
         sWhatsThis = "Sketcher_CompCurveEdition";
         sStatusTip = sToolTipText;
-        sAccel = "G, T";
+        sAccel = "X, T";
         eType = ForEdit;
 
         setCheckable(false);
@@ -1701,7 +1701,7 @@ CmdSketcherTrimming::CmdSketcherTrimming()
     sWhatsThis = "Sketcher_Trimming";
     sStatusTip = sToolTipText;
     sPixmap = "Sketcher_Trimming";
-    sAccel = "G, T";
+    sAccel = "X, T";
     eType = ForEdit;
 }
 
